@@ -1,0 +1,26 @@
+* {
+  text-align: center;
+}
+
+span {
+  color: rgb(48, 207, 255);
+}
+
+p {
+  font-size: 18px;
+}
+
+div > button {
+  background-color: rgb(32, 32, 32);
+  color: rgb(255, 255, 255);
+  font-size: 19px;
+  font-weight: bold;
+  border: 0;
+  border-radius: 6px;
+  height: 50px;
+  width: 150px;
+  margin: 15px;
+}
+.Click-submit:hover {
+  background-color: aqua;
+}

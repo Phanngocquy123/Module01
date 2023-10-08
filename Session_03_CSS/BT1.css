@@ -1,0 +1,20 @@
+h1 {
+    color: rgb(206, 206, 2);
+}
+
+#dongxanh {
+    color: rgb(17, 0, 248);
+    line-height: 0.01px;
+}
+
+#dongdo {
+    color: red;
+}
+.cantrai{
+    margin-left: 20px;
+}
+
+div>p {
+    background-color: rgb(248, 247, 191);
+    padding: 20px;
+}

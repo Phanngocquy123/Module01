@@ -1,0 +1,19 @@
+section {
+  background-image: url(../FileAnh/nghe-thuat-o-du-8.jpg);
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-size: 100%;
+  text-align: center;
+  padding: 35px;
+  line-height: 30px;
+  color: rgb(255, 255, 255);
+}
+p > a {
+  color: aliceblue;
+  text-decoration: none;
+  display: inline-block;
+  margin: 30px;
+  border-radius: 4px;
+  padding: 5px 15px 5px;
+  background: rgb(255, 60, 60);
+}
