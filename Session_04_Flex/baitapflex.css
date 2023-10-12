@@ -12,7 +12,7 @@
   justify-content: center;
 }
 .header__main > .header__main-1 {
-  display: flex;
+  /* display: flex;  dư phần này*/
   width: 1370px;
   height: 400px;
 }
