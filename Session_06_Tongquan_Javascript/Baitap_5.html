@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+    /*
+    [Bài Tập 5] Bài tập 
+
+Mục tiêu: Hiểu và vận dụng toán tử.
+
+Bài 7: Phân biệt “==” và “===”
+Kết quả của phép toán và giải thích:
+let a = 5; (number)
+let b= “5”; (string)
+console.log(a==b);  -> true (== chỉ so sánh giá trị, không so sánh về kiểu giữ liệu)
+console.log(a===b);-> false (=== so sánh giống nhau, true khi mà cùng giá trị và kiểu giữ liệu)
+console.log(a!=b);  -> false (!= chỉ so sánh khác giá trị, không xét đến kiểu)
+console.log(a!==b); ->true (!== so sánh khác về kiểu giữ liệu  hoặc  khác nhau về cả giá trị và kiểu dữ liệu)
+
+Bài 8: Phân biệt a++ và ++a.
+Tính giá trị của biếu thức sau:
+let a=6;
+let result: ++a + a + a++ + ++a + a;
+
+= 7 + 7 + 7 + 9 + 9
+= 39
+
+Bài 9: Kết quả của các phép toán.
+Trường hợp ||  từ trái sang phải, lấy thằng truthy đầu tiên, không có  thì lấy kết quả cuối cùng của dãy
+   console.log(0 || NaN ||"Rikkei Academy"||null);      kết quả: "Rikkei Academy"
+   console.log(null || NaN || false || null);           kết quả: null (thằng null cuối)
+   console.log(undefined || 1 || 5 || null);            kết quả: 1
+   console.log("" || null || 5 || NaN);                 kết quả: 5
+   console.log(1 || null || 12|| NaN);                  kết quả: 1
+
+Bài 10: Kết quả của các phép toán.
+Trường hợp &&  từ trái sang phải, lấy thằng falsy đầu tiên, không có thì lấy kết quả cuối cùng của dãy
+   console.log(0 && 1 && "Rikkei Academy" &&null);          kết quả: 0
+   console.log(2 && NaN && false && null);                  kết quả: NaN
+   console.log(3 && 1 && 5 && null);                        kết quả: null
+   console.log("1" && undefined && 5 && NaN);               kết quả: undefined
+   console.log(1 && null && 12&& NaN);                      kết quả: null
+
+
+ 
+     */
+    </script>
+</body>
+</html>
