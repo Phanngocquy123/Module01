@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bai8</title>
+  </head>
+  <body>
+    <script>
+      let weight = +prompt("Mời bạn nhập cân nặng (kg)");
+      let height = +prompt("Mời bạn nhập chiều cao (m)");
+      bmi = weight / (height * height);
+      /* let bmi = prompt("nhập"); */
+      /* sử dụng bảng who */
+      if (bmi < 40) {
+        if (bmi < 25) {
+          if (bmi < 18.5) {
+            alert("Cân nặng thấp (gầy)");
+          } else {
+            alert("Bình thường");
+          }
+        } else {
+          if (bmi < 35) {
+            if (bmi < 30) {
+              alert("Thừa cân: Tiền béo phì");
+            } else {
+              alert("Thừa cân: Béo phị độ I");
+            }
+          } else {
+            alert("Thừa cân: Béo phị độ II");
+          }
+        }
+      } else {
+        alert("Thừa cân: Béo phị độ III");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bai9</title>
+  </head>
+  <body>
+    <script>
+      let maths = +prompt("Nhập điểm môn TOÁN");
+      let physics = +prompt("Nhập điểm môn LÝ");
+      let chemistry = +prompt("Nhập điểm môn HÓA");
+      let literature = +prompt("Nhập điểm môn VĂN");
+      let history = +prompt("Nhập điểm môn SỬ");
+      let geography = +prompt("Nhập điểm môn ĐỊA");
+      average=(maths+physics+chemistry+literature+history+geography)/6
+
+      /* let average = +prompt("nhập"); */
+      if (average >= 5) {
+        if (average < 8) {
+          if (average >= 6.5) {
+            alert("Xếp loại khá");
+          } else {
+            alert("Xếp loại trung bình");
+          }
+        } else {
+          alert("Xếp loại giỏi");
+        }
+      } else {
+        alert("Xếp loại yếu");
+      }
+    </script>
+  </body>
+</html>
