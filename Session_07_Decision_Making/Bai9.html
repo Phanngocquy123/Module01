@@ -8,26 +8,41 @@
   <body>
     <script>
       let maths = +prompt("Nhập điểm môn TOÁN");
+      while (0 > maths || maths > 10) {
+        maths = +prompt("Hãy nhập điểm môn TOÁN");
+      }
       let physics = +prompt("Nhập điểm môn LÝ");
+      while (0 > physics || physics > 10) {
+        physics = +prompt("Hãy nhập điểm môn LÝ");
+      }
       let chemistry = +prompt("Nhập điểm môn HÓA");
+      while (0 > chemistry || chemistry > 10) {
+        chemistry = +prompt("Hãy nhập điểm môn HÓA");
+      }
       let literature = +prompt("Nhập điểm môn VĂN");
+      while (0 > literature || literature > 10) {
+        literature = +prompt("Hãy nhập điểm môn VĂN");
+      }
       let history = +prompt("Nhập điểm môn SỬ");
+      while (0 > history || history > 10) {
+        history = +prompt("Hãy nhập điểm môn SỬ");
+      }
       let geography = +prompt("Nhập điểm môn ĐỊA");
-      average=(maths+physics+chemistry+literature+history+geography)/6
+      while (0 > geography || geography > 10) {
+        geography = +prompt("Hãy nhập điểm môn ĐỊA");
+      }
+      average =
+        (maths + physics + chemistry + literature + history + geography) / 6;
 
       /* let average = +prompt("nhập"); */
-      if (average >= 5) {
-        if (average < 8) {
-          if (average >= 6.5) {
-            alert("Xếp loại khá");
-          } else {
-            alert("Xếp loại trung bình");
-          }
-        } else {
-          alert("Xếp loại giỏi");
-        }
+      if (8<=average&&average<=10) {
+        alert("Xếp loại GIỎI")
+      } else if (6.5<=average&&average<8) {
+        alert("Xếp loại KHÁ")
+      } else if (5<=average&&average<6.5) {
+        alert("Xếp loại TRUNG BÌNH")
       } else {
-        alert("Xếp loại yếu");
+        alert("Xếp loại YẾU")
       }
     </script>
   </body>

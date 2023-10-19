@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bai2</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-         let hour=+prompt("Bây giờ là mấy giờ");
-        if (hour<18) {
-            alert("Good day")
-        } else {
-            alert("Good evening")
-        }
+      let hour = +prompt("Bây giờ là mấy giờ");
+      while (hour < 0 || hour >= 23) {
+        hour = +prompt("Hãy nhập lại giờ");
+      }
+      if (hour < 18) {
+        alert("Good day");
+      } else {
+        alert("Good evening");
+      }
     </script>
-</body>
+  </body>
 </html>

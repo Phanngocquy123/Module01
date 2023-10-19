@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let n = +prompt("Mời bạn nhập số nguyên dương");
+      while (Number.isNaN(n) || n < 0 || Number.isInteger(n) != true) {
+        n = +prompt("Mời bạn nhập lại số");
+      }
+
+      for (let i = 1; i <= n; i++) {
+        for (let j = 0; j < n; j++) {
+          let sumij = i + j;
+          document.writeln(sumij);
+        }
+        document.writeln("<br/>");
+      }
+    </script>
+  </body>
+</html>

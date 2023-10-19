@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let numberInput = +prompt("Mời bạn nhập số nguyên dương");
+      while (Number.isNaN(numberInput) ||numberInput < 0 ||Number.isInteger(numberInput) != true) {
+        numberInput = +prompt("Mời bạn nhập lại số");
+      }
+
+      let numberOutput = numberInput;
+      let result = 1;
+      if (numberOutput == 0) {
+        alert(`Giai thừa của ${numberInput} là: 0 `);
+      } else {
+        do {
+          result *= numberOutput;
+          numberOutput--;
+        } while (numberOutput > 0);
+        alert(`Giai thừa của ${numberInput} là: ${result} `);
+      }
+    </script>
+  </body>
+</html>

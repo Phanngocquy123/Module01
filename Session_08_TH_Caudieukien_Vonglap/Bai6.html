@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+      </head>
+      <body>
+        <script>
+          let a = +prompt(
+            "Nhập vào số nguyên dương để kiểm tra phải số hoàn hảo hay không?"
+          );
+          while (Number.isNaN(a) || a < 0 || Number.isInteger(a) != true) {
+            a = +prompt("Mời bạn nhập lại số");
+          }
+          let b = 0;
+          for (let i = a - 1; i > 0; i--) {
+            if (a % i == 0) {
+              b += i;
+            }
+          }
+          /* console.log(b) */
+          if (b == a) {
+            alert(`${a} là số hoàn hảo`);
+          } else {
+            alert(`${a} không phải là số hoàn hảo`);
+          }
+          /* 6 - 28 - 496 - 8128 - 33550336.... */
+        </script>
+      </body>
+    </html>
+  </body>
+</html>
