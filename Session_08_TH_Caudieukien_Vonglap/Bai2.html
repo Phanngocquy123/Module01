@@ -7,18 +7,17 @@
   </head>
   <body>
     <script>
-        /* bài này em vẫn chưa làm được */
-      /* et text = prompt("Hãy nhập một câu bất kì");
-    
-      function reverse (text) {
-    if (text.length < 2)
-        return text;
-     var halfIndex = Math.ceil(text.length / 2);
-     return reverse(text.substr(halfIndex)) + 
-        reverse(text.substr(0, halfIndex));
-}
+      let text = prompt("hãy nhập chuỗi ký tự");
+      let reversedText = [...text].reverse().join("");
+      alert(reversedText);
 
-document.write(`${}`) */
+      /* em mới cập nhập thêm bài này */
+
+      /* const word = "apple"
+      const reversedWord = [...word].reverse().join("")
+      console.log(reversedWord) */
+      // "elppa"
+      /* https://anonystick.com/blog-developer/10-thu-thuat-xu-ly-chuoi-tuyet-voi-trong-javascript-2021010593482303 */
     </script>
   </body>
 </html>
