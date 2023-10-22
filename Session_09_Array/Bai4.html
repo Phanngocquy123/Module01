@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let text = prompt("Hãy nhập chuỗi");
+      let textSplit = text.split("");
+      
+      for (let i = 0; i < textSplit.length; i++) {
+        if (textSplit[i] >= "a" && textSplit[i] <= "z") {
+          b = textSplit[i].toUpperCase();
+          textSplit.splice(i, 1, b);
+        } else {
+          let d = textSplit[i].toLowerCase();
+          textSplit.splice(i, 1, d);
+        }
+      }
+      outputText = textSplit.join("");
+      document.writeln(`Chuỗi nhập vào: ${text}`);
+      document.writeln("<br/>");
+      document.writeln(`Chuỗi đảo ngược: ${outputText}`);
+    </script>
+  </body>
+</html>
