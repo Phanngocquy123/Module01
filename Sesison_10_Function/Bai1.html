@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let input = [];
+      for (let i = 0; i < 3; i++) {
+        input[i] = +prompt(`Hãy nhập vào 3 số, số thứ ${i + 1} là:`);
+      }
+
+      function soBenhat(sbn) {
+        let lengthInput = input.length;
+        let min = Infinity;
+        while (lengthInput--) {
+          if (sbn[lengthInput] < min) {
+            min = sbn[lengthInput];
+          }
+        }
+        return min;
+      }
+      let kq = soBenhat(input);
+      alert(`Số bé nhất là: ${kq}`);
+
+      /* Bài 1: Viết chương trình cho người dùng nhập vào 3 số, 
+      viết hàm kiểm tra để tìm ra số bé nhất và in ra số đó */
+    </script>
+  </body>
+</html>

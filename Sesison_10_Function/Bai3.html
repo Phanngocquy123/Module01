@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let numberInput = +prompt("Mời bạn nhập số:");
+      while (
+        Number.isNaN(numberInput) ||
+        numberInput < 0 ||
+        Number.isInteger(numberInput) != true
+      ) {
+        numberInput = +prompt("Mời bạn nhập lại số");
+      }
+
+      function giaiThua(gt) {
+        if (gt == 1) return 1;
+        return gt * giaiThua(--gt);
+      }
+      alert(`Giai thừa của ${numberInput} là: ${giaiThua(numberInput)}`);
+
+      /* Bài 3: Viết hàm tính giai thừa của một số nguyên bất kỳ được đưa vào. 
+      Thực thi hàm vừa khởi tạo */
+    </script>
+  </body>
+</html>

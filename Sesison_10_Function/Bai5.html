@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let text = prompt("Hãy nhập chuỗi ký tự");
+      let textSplit = text.split("");
+      let len = textSplit.length;
+      let arrayCount = [];
+
+      function demSoKytu(kytu) {
+        for (let i = 0; i < len; i++) {
+          if (arrayCount[kytu[i]]) {
+            arrayCount[kytu[i]]++;
+          } else {
+            arrayCount[kytu[i]] = 1;
+          }
+        }
+
+        for (const key in arrayCount) {
+          document.write(`Ký tự  ${key}  xuất hiện ${arrayCount[key]} lần`);
+          document.writeln("<br/>");
+        }
+      }
+      demSoKytu(textSplit);
+
+      /* Bài 5: Cho người dùng nhập vào chuỗi kí tự. 
+      Viết hàm kiểm tra xem tần suất xuất hiện của mỗi ký tự 
+      và in ra chúng */
+    </script>
+  </body>
+</html>

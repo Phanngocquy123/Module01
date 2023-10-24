@@ -7,7 +7,7 @@
   </head>
   <body>
     <script>
-      let n = prompt("Nhập vào tổng số ký tự của mảng");
+      let n = prompt("Nhập vào tổng số ký tự của câu:");
       let text = [];
       for (let i = 0; i < n; i++) {
         text[i] = prompt(`Ký tự thứ ${i + 1} là:`);
@@ -15,7 +15,7 @@
       document.writeln(`Mảng bạn đã nhập là: ${text}`);
       let reverseText = text.reverse().join("");
       document.writeln("<br/>");
-      document.writeln(`Mảng sau khi đảo là: ${reverseText}`);
+      document.writeln(`Câu sau khi đảo là: ${reverseText}`);
 
       /* Bài 1: Viết một chương trình để in các ký tự trong một mảng theo thứ tự đảo ngược. 
       Ví dụ, nếu một mảng chứa các ký tự [ 'c', 's', 'c', '2', '6', '1' ]
