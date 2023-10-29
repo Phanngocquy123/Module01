@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let text = prompt("Hãy nhập chuỗi");
+      /* let text="acbbvnbk" */
+      function KetQua(chuoi) {
+        let chuoiDaiNhat = [];
+        let chuoiCon = "";
+        let startIndex = 0;
+        let maxLength = 0;
+
+        for (let i = 0; i < chuoi.length; i++) {         
+          const testIndex = chuoiCon.indexOf(chuoi[i]);
+
+          if (testIndex !== -1) {
+            startIndex = startIndex + testIndex + 1;
+          }
+
+          chuoiCon = chuoi.slice(startIndex, i + 1);
+
+          if (chuoiCon.length > maxLength) {
+            maxLength = chuoiCon.length;
+            chuoiDaiNhat = [];
+            chuoiDaiNhat.push(chuoiCon);
+          } else if (chuoiCon.length == maxLength) {
+            chuoiDaiNhat.push(chuoiCon);
+          }
+        }
+        return chuoiDaiNhat;
+      }
+      alert(`Chuỗi nhập vào: ${text}
+      Chuỗi dài nhất: ${KetQua(text)}`);
+
+      /* tìm chuỗi con dài nhất, k chưa các ký tự trùng nhau */
+    </script>
+  </body>
+</html>

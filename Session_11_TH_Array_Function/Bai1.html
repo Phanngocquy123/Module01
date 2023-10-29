@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let n = +prompt("Hãy nhập tổng số các số nguyên tố đầu tiên");
+      let soNguyenTo = [2];
+      let count = 1;
+
+      if (count == n) {
+        alert(`${n} số nguyên tố đầu tiên là: ${soNguyenTo.join(",")}`);
+      } else {
+        for (let i = 3; i < Infinity; i++) {
+          let b = true;
+          for (let j = 2; j < i; j++) {
+            if (i % j == 0) {
+              b = false;
+              break;
+            }
+          }
+          if (b) {
+            soNguyenTo.push(i);
+            count++;
+          }
+          if (count >= n) {
+            break;
+          }
+        }
+        alert(`${n} số nguyên tố đầu tiên là: ${soNguyenTo.join(",")}`);
+      }
+    </script>
+  </body>
+</html>

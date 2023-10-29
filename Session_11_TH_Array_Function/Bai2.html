@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr = [5, 1, 2, 3, 4, 5, 6, 7, 8, 5, 5, 5, 9, 10, 6, 0, 12, 12];
+      let len = arr.length;
+      let arrLuotBo = [];
+      let tongSo = 10;
+      let count = 0;
+
+      if (tongSo % 2 == 0) {
+        for (let m = 0; m < len; m++) {
+          if (arr[m] == tongSo / 2) {
+            count++;
+          }
+        }
+      }
+
+      for (let y = 0; y < len; y++) {
+        if (!arrLuotBo.includes(arr[y])) {
+          arrLuotBo.push(arr[y]);
+        }
+      }
+
+      if (count >= 2) {
+        arrLuotBo.push(tongSo / 2);
+      }
+
+      for (let i = 0; i < arrLuotBo.length - 1; i++) {
+        for (let j = i + 1; j < arrLuotBo.length; j++) {
+          if (arrLuotBo[i] + arrLuotBo[j] == tongSo) {
+            console.log(`Cặp số nguyên là: ${arrLuotBo[i]} và ${arrLuotBo[j]}`);
+          }
+        }
+      }
+
+      /* Viết hàm trả về tất cả các cặp số có tổng bằng 10 */
+    </script>
+  </body>
+</html>
