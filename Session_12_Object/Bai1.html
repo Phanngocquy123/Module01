@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let stores = [
+        { id: 1, name: "Milk", count: 100 },
+        { id: 2, name: "Yakult", count: 100 },
+        { id: 3, name: "Butter", count: 100 },
+      ];
+      let carts = [];
+      let choice = "";
+
+      let arrayStores = [];
+      for (let m = 0; m < stores.length; m++) {
+        arrayStores.push(stores[m].name);
+      }
+      //C
+      function createProduct() {
+        let productBuy = prompt("Mời nhập tên sản phẩm mua");
+        while (!arrayStores.includes(productBuy)) {
+          productBuy = prompt("Mời bạn nhập lại tên sản phẩm mua");
+        }
+
+        do {
+          for (let i = 0; i < stores.length; i++) {
+            if (productBuy == stores[i].name) {
+              let sl = prompt(`Số lượng ${stores[i].name} là:`);
+              carts.push({
+                stt: stores[i].id,
+                tenhang: stores[i].name,
+                soluong: sl,
+              });
+              alert(`${stores[i].name} đã được thêm vào giỏi hàng`);
+              stores[i].count = 100 - sl;
+              break;
+            }
+          }
+          var buyMore = prompt("Bạn có muốn mua thêm, nhập '1' nếu có, '0' kết thúc   ");
+          if (buyMore == 1) {
+            productBuy = prompt("Mời nhập tên sản phẩm mua");
+            while (!arrayStores.includes(productBuy)) {
+              productBuy = prompt("Mời bạn nhập lại tên sản phẩm mua");
+            }
+          }
+        } while (buyMore == 1);
+        return;
+      }
+
+      function printProduct() {
+        console.log("Số lượng còn lại trong giỏ hàng", stores);
+        if (carts.length == 0) {
+          console.log("Chưa có sản phẩm nào");
+        } else {
+          console.log("Sản phẩm đã mua", carts);
+        }
+        return;
+      }
+
+      function updateProduct() {
+        let thayDoi = prompt("Bạn muốn chỉnh sửa số lượng sản phẩm nào");
+        for (let h = 0; h < carts.length; h++) {
+          if (thayDoi == carts[h].tenhang) {
+            let soLuongThayDoi = prompt(`${thayDoi} số lượng:`);
+            carts[h].soluong = soLuongThayDoi;
+            for (let b = 0; b < stores.length; b++) {
+              if (stores[b].name == carts[h].tenhang) {
+                stores[b].count = 100 - soLuongThayDoi;
+              }
+            }
+          }
+        }
+      }
+
+      function deleteProduct() {
+        let xoaSanPham = prompt("Bạn muốn xóa sản phẩm nào");
+        for (let y = 0; y < carts.length; y++) {
+          for (let c = 0; c < carts.length; c++) {
+            if (stores[c].name == carts[y].tenhang) {
+              stores[c].count += buLaiSoluong;
+            }
+          }
+          if (carts[y].tenhang == xoaSanPham) {
+            let buLaiSoluong = carts[y].soluong;
+            delete carts[y];
+          }
+        }
+      }
+
+      do {
+        choice = prompt("Mời nhập lựa chọn C/R/U/D/E").toUpperCase();
+        switch (choice) {
+          case "C":
+            createProduct();
+            break;
+          case "R":
+            printProduct();
+            break;
+          case "U":
+            updateProduct();
+            break;
+          case "D":
+            deleteProduct();
+            break;
+
+          default:
+            break;
+        }
+      } while (choice != "E");
+      console.log("Cảm ơn bạn đã đến với Rikkei Stores");
+    </script>
+  </body>
+</html>
