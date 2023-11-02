@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./DOM.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1>My To Do List</h1>
+      <div class="header__input">
+        <input id="inputTitle" type="text" placeholder="Title" />
+        <input
+          class="inputButton"
+          type="button"
+          value="Add"
+          onclick="addTitle()"
+        />
+      </div>
+    </div>
+    <div id="result">
+      <ul>
+        <li>Hit the gym</li>
+        <li>Pay bills</li>
+        <li>Meet George</li>
+        <li>Buys eggs</li>
+        <li>Read a book</li>
+        <li>Organize office</li>
+      </ul>
+    </div>
+    <script>
+      function addTitle() {
+        var addTheLi = document.createElement("li");
+        var titleValue = document.getElementById("inputTitle").value;
+        addTheLi.appendChild(document.createTextNode(titleValue));
+        if (titleValue == "") {
+          alert("Bạn chưa nhập nội dung");
+        } else {
+          document.getElementById("result").prepend(addTheLi);
+        }
+        document.getElementById("inputTitle").value = "";
+
+        var addSpan = document.createElement("span");
+        addSpan.appendChild(document.createTextNode("\u00D7"));
+        addSpan.className = "theClose";
+        addTheLi.appendChild(addSpan);
+
+        let clickDongThe = document.getElementsByClassName("theClose");
+        for (let i = 0; i < clickDongThe.length; i++) {
+          clickDongThe[i].onclick = function () {
+            let pCurrent = this.parentElement;
+            pCurrent.style.display = "none";
+          };
+        }
+    
+    }
+      
+
+      let addCloseChoTheli = document.getElementsByTagName("li");
+      for (let j = 0; j < addCloseChoTheli.length; j++) {
+        let addSpanNgoai = document.createElement("span");
+        addSpanNgoai.appendChild(document.createTextNode("\u00D7"));
+        addSpanNgoai.className = "theClose";
+        addCloseChoTheli[j].appendChild(addSpanNgoai);
+      }
+
+      let clickDongThe = document.getElementsByClassName("theClose");
+      for (let q = 0; q < clickDongThe.length; q++) {
+        clickDongThe[q].onclick = function () {
+          var pCurrent = this.parentElement;
+          pCurrent.style.display = "none";
+        };
+      }
+
+      let checkList = document.querySelector("ul");
+      checkList.addEventListener(
+        "click",
+        function (event) {
+          if (event.target.tagName === "LI") {
+            event.target.classList.toggle("checked");
+          }
+        },
+        false
+      );
+    </script>
+  </body>
+</html>
