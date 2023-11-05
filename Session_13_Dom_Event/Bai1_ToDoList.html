@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        Todo-list
+        khai báo 1 mảng chứa danh sách công việc
+        mình sẽ lấy giá trị ô input người dùng nhập vào
+        push vào mảng danh sách công việc
+        mang mảng đi hiển thị
+
+     -->
+    <input id="job" type="text"> <button id="save" onclick="addTodo()">Add</button>
+    <ul id="showJobs">
+        <!-- <li>
+            công việc 1
+            <button> sửa </button>
+            <button>xoá</button>
+        </li>
+        <li>công việc 2</li> -->
+       
+    </ul>
+    <script>
+        // khai báo 1 mảng chứa danh sách công việc
+        // lấy giá trị ô input người dùng nhập vào
+        // sinh id riêng cho mỗi công việc
+        // tạo đối tượng sau đó push vào 1 cái mảng
+        // dùng cái mảng đi render
+        /* 
+            Math.floor làm tròn giá trị xuống
+            Math.random sinh ngẫu nhiên 1 số từ 0 đến nhỏ hơn 1
+
+         */
+       let checkEdit="";
+        function uuid() {
+           
+            return Math.floor(Math.random()*848985956562)+new Date().getMilliseconds();
+        }
+        let todos=[];
+        // function để add todo
+        function addTodo() {
+            // console.log("111111");
+            let inputValue= document.getElementById("job").value;
+            if(inputValue!=""){
+                // tạo đối tượng có thuộc tính name và id
+                // thuộc tính name có giá trị người dùng nhập vào
+                // id là giá trị của hàm sinh id
+                let obj={
+                    name:inputValue,
+                    id:uuid(),
+                    
+                }
+                if(checkEdit!=""){
+                    // chứng tỏ người dùng đang muốn edit chứ không phải thêm
+                    for (let i = 0; i < todos.length; i++) {
+                        if(todos[i].id==checkEdit){
+                            todos.splice(i,1,{...obj,id:checkEdit});    // ...obj: gọi lại thằng mảng trước đó
+                            checkEdit="";
+                            document.getElementById("save").innerText = "Add";
+                            document.getElementById("job").value = "";
+                            showJobs();
+                            return;
+                        }
+                    }
+                }
+               
+                todos.push(obj);
+                // sau khi thêm xong đưa ô input về dạng mặc đỊnh 
+                document.getElementById("job").value="";
+            }
+            // sau khi add xong phải gọi ngay hàm show job để hiển thị
+            showJobs();
+        }
+        // function hiển thị danh sách công việc
+        function showJobs() {
+            let text="";
+            for (let i = 0; i < todos.length; i++) {
+               text+=
+                `
+                    <li>
+                        ${todos[i].name}
+                        <button onclick=editJob(${todos[i].id})> sửa </button>
+                        <button onclick=deleteJob(${todos[i].id})> xoá </button>
+                    </li>
+                `
+            }
+            document.getElementById("showJobs").innerHTML=text;
+        }
+       showJobs()
+        // function xoá công việc
+        function deleteJob(id) {
+            // console.log("1111111111",id);
+            // có id rồi tìm xem id đó nằm ở đâu trong list todo
+            let deleteConfirm= confirm("bạn có muốn xoá hay không?");
+            if(deleteConfirm){
+                for (let i = 0; i < todos.length; i++) {
+                    if (todos[i].id == id) {
+                        todos.splice(i,1);
+                        // sau khi xoá xong phải gọi hàm hiển thị lại!
+                        showJobs();
+                        break;
+                    }
+                }
+            }
+        }
+        // function sửa công việc
+        function editJob(id) {
+            /* 
+            lấy id của công việc cần sửa 
+             */
+            checkEdit=id;
+            document.getElementById("save").innerText="Edit"
+            for (let i = 0; i < todos.length; i++) {
+                if(todos[i].id==id){
+                    document.getElementById("job").value=todos[i].name;
+                    break;
+                }
+            }
+
+            
+        }
+
+    </script>
+</body>
+
+</html>

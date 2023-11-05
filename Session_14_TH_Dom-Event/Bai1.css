@@ -1,0 +1,99 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.header{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 30px;
+    margin: 30px ;
+}
+.bodySend{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 90%;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px;
+}
+#inputText{
+    height: 45px;
+    width: 83%;
+    border-style: none;
+}
+#inputText:focus{       /* bỏ đường viền khi click vào */
+    outline: none;
+}
+#save{
+    height: 35px;
+    width: 90px;
+    border-radius: 5px;
+}
+#reviewResult{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 95%;
+}
+.spanDiem{
+    background-color: rgb(236, 46, 141);
+    color: aliceblue;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.pReview{
+    margin-left: 15px;
+    margin-bottom: 30px;
+    position: relative; 
+}
+.buttonDelete{
+    position: absolute;
+    right: 0;
+    background-color: white;
+    border-style: none;
+}
+.buttonDelete:hover{
+    background-color: red;
+}
+.buttonEdit{
+    position: absolute;
+    right: 40px;
+    background-color: white;
+    border-style: none;
+}
+.buttonEdit:hover{
+    background-color: chartreuse;
+}
+
+#point{
+    height: 40px;
+    width: 500px;
+    display: flex;
+    gap: 10px;
+}
+
+.diemInput{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(206, 200, 228);
+    width: 110px;
+    border-radius: 50%;
+}
+.diemInput:hover{
+    background-color: fuchsia;
+}
+.activedClolor{
+background-color: rgb(215, 230, 0);
+}
