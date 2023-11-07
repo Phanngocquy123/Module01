@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./game.css" />
+  </head>
+  <body>
+    <div class="container">
+      </div>
+      <button onclick="resetListDog()">Reset</button>
+    </div>
+
+    <script>
+     let imgList=[
+         {
+            name:"dog4",
+            img:"./fileanh/cho4.jpg",
+            idOpenBlock:1,
+            idCompare:4,
+        },
+        {
+            name:"dog1",
+            img:"./fileanh/cho1.jpg",
+            idOpenBlock:2,
+            idCompare:1
+        },
+        {
+            name:"dog5",
+            img:"./fileanh/cho5.jpg",
+            idOpenBlock:3,
+            idCompare:5
+        },
+        {
+            name:"dog2",
+            img:"./fileanh/cho2.jpg",
+            idOpenBlock:4,
+            idCompare:2
+        },
+        {
+            name:"dog3",
+            img:"./fileanh/cho3.jpg",
+            idOpenBlock:5,
+            idCompare:3
+        },
+        {
+            name:"dog1",
+            img:"./fileanh/cho1.jpg",
+            idOpenBlock:6,
+            idCompare:1
+        },
+        {
+            name:"dog4",
+            img:"./fileanh/cho4.jpg",
+            idOpenBlock:7,
+            idCompare:4
+        },
+        {
+            name:"dog5",
+            img:"./fileanh/cho5.jpg",
+            idOpenBlock:8,
+            idCompare:5
+        },
+        {
+            name:"dog6",
+            img:"./fileanh/cho6.jpg",
+            idOpenBlock:9,
+            idCompare:6
+        },
+        {
+            name:"dog2",
+            img:"./fileanh/cho2.jpg",
+            idOpenBlock:10,
+            idCompare:2
+        },
+        {
+            name:"dog3",
+            img:"./fileanh/cho3.jpg",
+            idOpenBlock:11,
+            idCompare:3
+        },
+        {
+            name:"dog6",
+            img:"./fileanh/cho6.jpg",
+            idOpenBlock:12,
+            idCompare:6
+        },
+     ]
+
+     function showImg() {
+        let imgText=""
+        for (let i = 0; i < imgList.length; i++) {
+            imgText+=
+            `
+            <div class="container__img" onclick="choiceImg(${imgList[i].idOpenBlock},${imgList[i].idCompare})">
+              <div class="container__img-dog )" >
+                     <img class="imgDog" src="${imgList[i].img}" alt="" />
+                </div>
+              
+              
+              <div class="container__img-cover">
+                    <img class="imgCover" src="./fileanh/chamhoi.png" alt="" />
+                </div>
+
+
+                
+                
+            </div>
+            `
+        }
+        document.getElementsByClassName("container")[0].innerHTML=imgText
+        
+        console.log(imgList.length)
+     }
+     showImg()
+
+let count=0;
+let arrTemporality=[]
+function choiceImg(block,compare) {
+  let addImgBlock=document.getElementsByClassName("imgDog")
+  
+  for (let j = 0; j < addImgBlock.length; j++) {
+    if (imgList[j].idOpenBlock==block) {
+      addImgBlock[j].classList.add("imgBlock")
+    }
+  }
+  let imgIdOpenBlock=compare
+arrTemporality.push(imgIdOpenBlock)
+  console.log(arrTemporality)
+    for (let i = 0; i < arrTemporality.length; i++) {
+        if (arrTemporality[i]==arrTemporality[i+1]) {
+          arrTemporality.splice(i,2)
+        count++
+            console.log("okkk")
+        }else if(i>1){
+          for (let a = 0; a < addImgBlock.length; a++) {
+            
+            addImgBlock[a].classList.remove("imgBlock")
+            arrTemporality.splice(0)
+            count=0
+          }
+          
+        }
+        if (count==6) {
+          
+          alert("dd")
+          
+        }
+        
+    }
+}
+
+
+
+
+
+     /* function resetListDog() {
+        imgList.sort(function() {
+        return 0.5 - Math.random();});
+        showImg()
+     } */
+    </script>
+  </body>
+</html>
+
+<!-- 
+
+    <html>
+<body>
+</body>
+<script>
+var arrDisplayEntry = [1,2,3,4,5,6,7,8,9,0];
+//Array elements now scrambled
+arrDisplayEntry.sort(function() {
+return 0.5 - Math.random();});
+console.log(arrDisplayEntry);
+</script>
+</html>
+ -->
