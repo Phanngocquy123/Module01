@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    display: flex;
+  }
+  .registerCss {
+    display: inline-block;
+    width: 35%;
+    margin: 50px auto;
+    border: double 7px rgb(21, 0, 255);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  label {
+    font-size: 25px;
+  }
+  input {
+    height: 35px;
+    width: 98%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-indent: 10px;
+    font-size: 20px;
+    border-color: #dbdb;
+  }
+  input:focus {
+    background-color: antiquewhite;
+  }
+  .divBtn {
+    text-align: center;
+  }
+  #loginBtn {
+    height: 35px;
+    width: 120px;
+    background-color: rgb(233, 250, 149);
+    font-size: 20px;
+    border-radius: 5px;
+  }
+  #loginBtn:hover {
+    color: rgb(0, 4, 247);
+    font-weight: bold;
+  }
+  

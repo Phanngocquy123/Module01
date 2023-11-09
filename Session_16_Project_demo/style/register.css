@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+}
+.registerCss {
+  display: inline-block;
+  width: 35%;
+  margin: 50px auto;
+  border: double 7px red;
+  border-radius: 10px;
+  padding: 20px;
+}
+label {
+  font-size: 25px;
+}
+input {
+  height: 35px;
+  width: 98%;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  text-indent: 10px;
+  font-size: 20px;
+  border-color: #dbdb;
+}
+input:focus {
+  background-color: antiquewhite;
+}
+.divBtn {
+  text-align: center;
+}
+#registerBtn {
+  height: 35px;
+  width: 100px;
+  background-color: rgb(76, 255, 63);
+  font-size: 20px;
+  border-radius: 5px;
+}
+#registerBtn:hover {
+  color: rgb(247, 0, 0);
+  font-weight: bold;
+}
