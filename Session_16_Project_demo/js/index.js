@@ -60,17 +60,17 @@ let productsBolt = [
     id: 109,
   },
 ];
+localStorage.setItem("products", JSON.stringify(productsBolt))
 
-console.log(productsBolt);
-let itemPage = 3;
+let itemPage = 4;
 let totalPage = Math.ceil(productsBolt.length / itemPage);
 let currentPage = 1;
 let start;
 let end;
 
 function startEnd(current) {
-  start = (current - 1)*itemPage;
-  end = start+itemPage;
+  start = (current - 1) * itemPage;
+  end = start + itemPage;
 }
 startEnd(1);
 
@@ -84,12 +84,11 @@ function showProduct() {
                 <img src="${productsBolt[i].img}" alt="" class="imgBolt" />
              </div>
              <div class="products__content-text">
-          <p class="content-name">${productsBolt[i].name}</p>
-          <p class="content-price">${productsBolt[i].price}</p>
-          <p onclick="addToCart">
-            Thêm vào giỏ hàng
-            <span class="material-symbols-outlined"> shopping_cart </span>
-          </p>
+               <p class="content-name">${productsBolt[i].name}</p>
+               <p class="content-price">${productsBolt[i].price}</p>
+               <p onclick="addToCart"> Thêm vào giỏ hàng
+                  <span class="material-symbols-outlined"> shopping_cart </span>
+               </p>
             </div>
         </div>
         `;
@@ -102,45 +101,45 @@ showProduct();
 function showListPage() {
   let text = "";
   for (let i = 1; i <= totalPage; i++) {
-    text += `
-                 <li onclick=choosePage(${i}) class="page-item ">${i}</li>
+       text += 
+            `
+            <li onclick=choosePage(${i}) class="page-item ">${i}</li>
             `;
   }
-  document.getElementsByClassName("listPage")[0].innerHTML = `
+  document.getElementsByClassName("listPage")[0].innerHTML = 
+            `
             <span class="material-symbols-outlined pageBtn" onclick="prePage()"> navigate_before </span>
             ${text}
             <span class="material-symbols-outlined pageBtn" onclick="nextPage()" > navigate_next </span>
-        `;
+           `;
 }
 showListPage();
 
 function choosePage(a) {
-    let pageItem = document.getElementsByClassName("page-item");
-    currentPage = a;
-    for (let i = 0; i < pageItem.length; i++) {
-        if (i == a - 1) {
-            pageItem[i].classList.add("page");
-        } else {
-            pageItem[i].classList.remove("page");
-
-        }
+  let pageItem = document.getElementsByClassName("page-item");
+  currentPage = a;
+  for (let i = 0; i < pageItem.length; i++) {
+    if (i == a - 1) {
+      pageItem[i].classList.add("page");
+    } else {
+      pageItem[i].classList.remove("page");
     }
-    startEnd(currentPage);
-    showProduct();
-    console.log("ddddddd",currentPage)
+  }
+  startEnd(currentPage);
+  showProduct();
 }
 
 function nextPage() {
-    currentPage++;
-    if (currentPage > totalPage) {
-        currentPage = totalPage;
-    }
-    choosePage(currentPage);
+  currentPage++;
+  if (currentPage > totalPage) {
+    currentPage = totalPage;
+  }
+  choosePage(currentPage);
 }
 function prePage() {
-    currentPage--;
-    if (currentPage < 1) {
-        currentPage = 1;
-    }
-    choosePage(currentPage);
+  currentPage--;
+  if (currentPage < 1) {
+    currentPage = 1;
+  }
+  choosePage(currentPage);
 }
