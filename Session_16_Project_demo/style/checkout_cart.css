@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+table {
+  border-collapse: collapse;
+}
+td {
+  text-align: center;
+}
+.imgOut {
+  height: 120px;
+  margin: 10px;
+}
+.quantityOut {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.quantityNumber {
+  background-color: rgb(255, 174, 0);
+  height: 25px;
+  width: 25px;
+  border-radius: 2px;
+  border: solid 1px;
+}
+.quantityBtn {
+  display: block;
+  height: 25px;
+  width: 25px;
+  border-radius: 2px;
+  border: solid 1px;
+}
+.quantityBtn:hover {
+  background-color: aqua;
+  cursor: pointer;
+}
+.deleteProduct:hover {
+  cursor: pointer;
+  background-color: red;
+}

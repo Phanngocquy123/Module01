@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        tr,
+        td {
+            text-align: center;
+
+        }
+
+        td {
+            width: 100px;
+            height: 100px;
+        }
+
+        img {
+            width: 80%;
+            height: 80%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    trang cart
+    <table border="1">
+        <thead>
+            <tr>
+                <th> Stt</th>
+                <th> Tên </th>
+                <th> Ảnh </th>
+                <th> Giá</th>
+                <th> Số Lượng </th>
+                <th> Thành Tiền</th>
+                <th> Xoá</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="5"> Tổng tiền thanh toán </th>
+                <th class="pay">1</th>
+            </tr>
+        </tfoot>
+    </table>
+    <script>
+        const VND = new Intl.NumberFormat('vi-VN', {
+            style: 'currency',
+            currency: 'VND',
+        });
+        let checkLogin = localStorage.getItem("idUser");
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+        function cart() {
+            // lấy ra id của user
+            // lấy ra danh sách user
+            for (let i = 0; i < users.length; i++) {
+                if (users[i].id == checkLogin) {
+                    //check xem user nào đang đăng nhập 
+                    let text = "";
+                    let pay = 0;
+                    for (let index = 0; index < users[i].cart.length; index++) {
+                        pay += +users[i].cart[index].quantity * users[i].cart[index].price;
+                        text +=
+                            `
+                            <tr>
+                                <td> ${index + 1}</td>
+                                <td> ${users[i].cart[index].name}</td>
+                                <td><img src=${users[i].cart[index].image}> </td>
+                                <td> ${VND.format(users[i].cart[index].price)}</td>
+                                <td> 
+                                    <button>-</button>
+                                    ${users[i].cart[index].quantity}
+                                    <button onclick=increase(${users[i].cart[index].id})>+</button>
+                                </td>
+                                <td> ${VND.format(users[i].cart[index].quantity * users[i].cart[index].price)} </td>
+                                <td> X </td>
+                            </tr>
+                       `
+                    }
+                    document.getElementById("tbody").innerHTML = text;
+                    document.getElementsByClassName("pay")[0].innerHTML = VND.format(pay);
+                }
+                break;
+            }
+        }
+        cart();
+        // function click tăng số lượng sản phẩm
+        function increase(idProduct) {
+             for (let i = 0; i < users.length; i++) {
+                if (users[i].id == checkLogin) {
+                    for(let j=0;j<users[i].cart.length;j++){
+                        if(users[i].cart[j].id== idProduct){
+                            users[i].cart[j].quantity=++users[i].cart[j].quantity;
+                            localStorage.setItem("users",JSON.stringify(users));
+                            cart();
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

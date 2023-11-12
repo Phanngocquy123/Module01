@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .register {
+            background-color: #dbdbdb;
+            width: 400px;
+            margin: 50px auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .register label {
+            display: inline-block;
+            min-width: 120px;
+        }
+
+        .register input {
+            outline: none;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin: 5px;
+        }
+
+        .register button {
+            margin: 0 auto;
+            padding: 5px;
+            width: 100px;
+            border: none;
+            border-radius: 5px;
+            background-color: tomato;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="register">
+        <label for="">username</label>
+        <input id="userName" type="text"> <br>
+        <label for="">email</label>
+        <input id="email" type="text"> <br>
+        <label >password</label>
+        <input id="password" type="password"> <br>
+        <label for="">confirmpassword</label>
+        <input id="confirmPassword" type="text"> <br>
+        <button onclick="signUp()">SignUp</button>
+        <p> bạn đã có tài khoản <a href="./login.html"> SignIn</a></p>
+
+    </div>
+
+    <script>
+        /*
+            Tạo mảng chứa danh sách user đăng kí
+            khi người dùng nhập dữ liệu lấy thông tin người dùng nhập
+            khởi tạo đỐi tượng  chứa các thông tin người dùng nhập
+            Kiểm tra xem email đã từng đăng kí hay chưa
+             + Nếu có báo email đã được đăng kí
+             + Nếu không push vào mảng danh sách user
+         */
+        function uuid() {
+            return Math.floor(Math.random()*885688785522+new Date().getMilliseconds());
+        }
+        function signUp() {
+            let users=JSON.parse(localStorage.getItem("users"))||[];
+            let userName = document.getElementById("userName").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirmPassword").value;
+            let obj={
+                name:userName,
+                email:email,
+                password:password,
+                id:uuid(),
+                cart:[],
+            }
+            // lọc xem user đã đăng kí email đó chưa hay chưa
+            let find= users.filter((item)=>{
+                return item.email==email;
+            })
+            if(find.length!=0){
+                console.log("email đã được đăng kí");
+                return;
+            }
+            users.push(obj);
+            localStorage.setItem("users",JSON.stringify(users));
+            document.getElementById("userName").value="";
+            document.getElementById("email").value="";
+            document.getElementById("password").value="";
+            document.getElementById("confirmPassword").value="";
+            window.location.href="./login.html";
+        }
+    </script>
+</body>
+
+</html>

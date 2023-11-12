@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* CSS phần header */
+        .header {
+            /* background-color: red; */
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .header .header__logo{
+            height: 50px;
+            width: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .header .header__logo img{
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .header__navigation ul{
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+         .header__navigation ul li a{
+            text-decoration: none;
+         }
+         .header__sign{
+            display: flex;
+            gap: 10px;
+         }
+         .header__sign .btn{
+            border: none;
+            padding: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            background-color: rgb(6, 235, 235);
+
+         }
+         .header__sign .cart{
+           
+            position: relative;
+         }
+          .header__sign .cart .cart-total{
+            border: 1px solid green;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            position: absolute;
+            bottom: 5px;
+            color: red;
+         }
+
+
+        .product {
+            display: flex;
+            /* background-color: tomato; */
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .product .product__item {
+            width: 25%;
+            background-color: rgb(194, 240, 194);
+            border-radius: 5px;
+        }
+
+        .product .product__item .product__item--image {
+            width: 100%;
+            height: 200px;
+        }
+
+        .product .product__item .product__item--cart:hover {
+            cursor: pointer;
+        }
+
+        .product .product__item .product__item--image img {
+            width: 100%;
+            height: 90%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        /* CSS show số trang  */
+        .pages {}
+
+        .pages .list-page {
+            display: flex;
+            list-style: none;
+            width: 400px;
+            margin: 30px auto;
+            justify-content: space-around;
+            align-items: center;
+
+        }
+
+        .pages .list-page li {
+            width: 30px;
+            height: 30px;
+            border: 1px solid rgb(243, 157, 157);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+
+        }
+
+        .page {
+            background-color: tomato;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header__logo">
+            <img src="./image/photo-1541491008689-b5d3c6615e2e.avif" alt="">
+            <span>CAKES</span>
+        </div>
+        <div class="header__navigation">
+            <ul>
+                <li><a href="" >Sản phẩm</a> </li>
+                <li><a href="">Giới thiệu</a></li>
+                <li><a href="">Liên hệ</a> </li>
+            </ul>
+        </div>
+        <div class="header__sign">
+            <span id="hello"> hello </span>
+            <button class=" btn header__sign--signIn">
+                 <a href="./login.html">signIn</a> 
+            </button>
+            <button class=" btn header__sign--signUp"> 
+                 <a href="./register.html">signUp</a href="./register.html"> 
+            </button>
+            <div id="cart" class="cart" style="display: none;">
+               <a href="./cart.html">Cart</a>
+                <span class="cart-total">1</span>
+            </div>
+        </div>
+    </div>
+    <div class="product">
+        <!-- <div class="product__item">
+            <div class="product__item--image">
+                <img src="./image/photo-1541491008689-b5d3c6615e2e.avif" alt="">
+            </div>
+            <p class="product__item--name">
+                name : bánh ngọt
+            </p>
+            <p class="product__item--price">
+                price : 5000
+            </p>
+            <p class="product__item--cart">
+                buy cart
+                <span class="material-symbols-outlined">
+                    shopping_cart
+                </span>
+
+            </p>
+        </div>
+        <div class="product__item">
+            <div class="product__item--image">
+                <img src="./image/photo-1541491008689-b5d3c6615e2e.avif" alt="">
+            </div>
+            <p class="product__item--name">
+                name
+            </p>
+            <p class="product__item--price">
+                500000
+            </p>
+            <p class="product__item--image">cart</p>
+        </div>
+        <div class="product__item">
+            <div class="product__item--image">
+                <img src="./image/photo-1541491008689-b5d3c6615e2e.avif" alt="">
+            </div>
+            <p class="product__item--name">
+                name
+            </p>
+            <p class="product__item--price">
+                500000
+            </p>
+            <p class="product__item--image">cart</p>
+        </div>
+        -->
+    </div>
+    <div class="pages">
+        <ul class="list-page">
+            <!-- <span class="material-symbols-outlined pre">
+                arrow_back_ios
+            </span>
+            <li class="page-item">1</li>
+            <li class="page-item">1</li>
+            <li class="page-item">1</li>
+            <li class="page-item">1</li>
+            <li class="page-item">1</li>
+            <span class="material-symbols-outlined next">
+                arrow_forward_ios
+            </span> -->
+        </ul>
+    </div>
+    <!-- 
+        danh sách sản phẩm
+      let products= [1,2,3,4,5,6,7,8,9,10 ]
+        -Nếu mỗi trang  có 3 sản phẩm thì có bao nhiêu trang?
+        -1.tổng số sản phẩm .: products.length
+        -2.số sản phẩm trong 1 trang : totalItem
+        -3.số trang     : totalPage  : Math.ceil(products.length/totalItem)
+        -4.currentPage : trang hiện tại (1,2,3,4)
+        -5.start = (currentPage-1)*totalItem =  0 3 6 9
+        -6.end   = start+totalItem  =  3 6 9 12
+     -->
+    <script>
+       function showCart() {
+         let isLogin = localStorage.getItem("idUser");
+           if (isLogin) {
+               document.getElementsByClassName("header__sign--signIn")[0].style.display = "none";
+               document.getElementsByClassName("header__sign--signUp")[0].style.display = "none";
+               let user = JSON.parse(localStorage.getItem("users"));
+               let userName = user.find((item) => {
+                   return item.id == isLogin
+               })
+               document.getElementById("hello").innerHTML = `hello ${userName.name}`;
+               document.getElementById("cart").style.display = "block";
+               document.getElementsByClassName("cart-total")[0].innerHTML = userName.cart.length;
+
+           } else {
+               document.getElementById("hello").style.display = "none";
+           }
+       }
+       showCart();
+        // tạo 1 mảng chứa danh sách sản phẩm
+        let products = [
+            {
+                name: "bánh ngọt1",
+                price: 50000,
+                image: "./image/photo-1559735614-e35ef860a156.avif",
+                id: 100,
+                stock:50,
+            },
+            {
+                name: "bánh ngọt2",
+                price: 50000,
+                image: "./image/photo-1560156710-0580247f9f69.avif",
+                id: 101,
+                decription:"bánh thơm ngon mời bạn ăn nha"
+            },
+            {
+                name: "bánh ngọt3",
+                price: 50000,
+                image: "./image/photo-1541491008689-b5d3c6615e2e.avif",
+                id: 102,
+            },
+            {
+                name: "bánh ngọt4",
+                price: 50000,
+                image: "./image/photo-1585220177022-3fdf02bd9da0.avif",
+                id: 103,
+            },
+            {
+                name: "bánh ngọt5",
+                price: 50000,
+                image: "./image/photo-1624225202979-a4aacc5dbeb6.avif",
+                id: 104,
+            },
+            {
+                name: "bánh ngọt6",
+                price: 50000,
+                image: "./image/photo-1624225203017-77f910f61d5c.avif",
+                id: 105,
+            },
+            {
+                name: "bánh ngọt7",
+                price: 50000,
+                image: "./image/photo-1624225203540-ed60f8826307.avif",
+                id: 106,
+            },
+            {
+                name: "bánh ngọt8",
+                price: 50000,
+                image: "./image/premium_photo-1661331799416-700af74c3213.avif",
+                id: 107,
+            },
+            {
+                name: "bánh ngọt9",
+                price: 50000,
+                image: "./image/premium_photo-1664472680005-b9976125009d.avif",
+                id: 108,
+            },
+            {
+                name: "bánh ngọt10",
+                price: 50000,
+                image: "./image/premium_photo-1690214491960-d447e38d0bd0.avif",
+                id: 109,
+            }
+        ]
+        localStorage.setItem("products", JSON.stringify(products));
+        //
+        let itemPage = 3;
+        let totalPage = Math.ceil(products.length / itemPage);
+        let currentPage = 1;
+        let start;
+        let end;
+        // FUNCTION TÍNH START VÀ END DỰA VÀO currentPage
+        function startEnd(current) {
+            start = (current - 1) * itemPage;//6
+            end = current * itemPage;//9
+        }
+        startEnd(1);
+        // viết function hiển thị danh sách sản phẩm
+        function showProduct() {
+            let text = "";
+            for (let i = 0; i < products.length; i++) {
+                if (i >= start && i < end) {
+                    text +=
+                        `
+                            <div class="product__item">
+                                <div class="product__item--image">
+                                    <img src="${products[i].image}" alt="">
+                                </div>
+                                <p class="product__item--name">
+                                    name : ${products[i].name}
+                                </p>
+                                <p class="product__item--price">
+                                    price : ${products[i].price}
+                                    <button onclick=detail(${products[i].id})> detail</button>
+                                </p>
+                                <p onclick=addToCart(${products[i].id}) class="product__item--cart">
+                                    buy cart
+                                    <span class="material-symbols-outlined">
+                                        shopping_cart
+                                    </span>
+                                </p>
+                            </div>
+                        `
+                }
+            }
+            document.getElementsByClassName("product")[0].innerHTML = text;
+        }
+        showProduct();
+        // function hiển thị số trang sản phẩm
+        function showListPage() {
+            let text = "";
+            for (let i = 1; i <= totalPage; i++) {
+                text +=
+                    `
+                     <li onclick=choosePage(${i}) class="page-item ">${i}</li>
+                `
+            }
+            document.getElementsByClassName("list-page")[0].innerHTML =
+                `
+              <span  onclick="prePage()" class="material-symbols-outlined pre">
+                arrow_back_ios
+              </span>
+                ${text}
+                <span onclick="nextPage()" class="material-symbols-outlined next">
+                        arrow_forward_ios
+                </span>
+            `
+            // cho trang đầu tiên có màu tomato
+            document.getElementsByClassName("page-item")[0].classList.add("page");
+        }
+        showListPage()
+        // function click chọn trang
+        function choosePage(a) {
+            // console.log("1111",nowPage);
+            let pageItem = document.getElementsByClassName("page-item");
+            // gán trang hiện tại bằng trang vừa click
+            currentPage = a;
+            for (let i = 0; i < pageItem.length; i++) {
+                if (i == a - 1) {
+                    pageItem[i].classList.add("page");
+                } else {
+                    pageItem[i].classList.remove("page");
+
+                }
+            }
+            startEnd(a);
+            showProduct();
+        }
+        // function next ảnh tiếp theo
+        function nextPage() {
+            currentPage++;
+            if (currentPage > totalPage) {
+                currentPage = totalPage;
+            }
+            choosePage(currentPage);
+        }
+        function prePage() {
+            currentPage--;
+            if (currentPage < 1) {
+                currentPage = 1;
+            }
+            choosePage(currentPage);
+        }
+        // function đi mua hàng
+        function addToCart(idProduct) {
+            // kiểm tra xem người dùng đã đăng nhập hay chưa.
+            let checkLogin = localStorage.getItem("idUser");
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+            let products = JSON.parse(localStorage.getItem("products")) || [];
+            if (!checkLogin) {
+                // tức là người dùng chưa đăng nhập
+                console.log("vui lòng đăng nhập để mua hàng");
+                return;
+            }
+            // đi lấy giỏ hàng của user để đi mua hàng
+            for (let i = 0; i < users.length; i++) {
+                if (users[i].id == checkLogin) {
+                    // lấy ra được giỏ hàng của user
+                    // users[i].cart
+                    // có id sản phẩm rồi thì xét xem đó là sản phẩm nào
+                    for (let j = 0; j < products.length; j++) {
+                        if (products[j].id == idProduct) {
+                            // lấy ra được sản phẩm
+                            console.log("33333", products[j]);
+                            // trước khi thêm vào giỏ hàng thì phải xác định sản phẩm này
+                            // đã có trong giỏ hàng hay chưa
+                            /* 
+                            nếu có thì tăng quality lên
+                            nếu chưa có sản phẩm thì push vào bình thường
+                             */
+                            // let result = users[i].cart.findIndex((quy) => {
+                            //     return quy.id == products[j].id
+                            // })
+                            let check=true;
+                            let result;
+                            for (let k = 0; k < users[i].cart.length; k++) {
+                               if(users[i].cart[k].id==idProduct){
+                                    check=false;
+                                    result=k;
+                                    break;
+                               }
+                                
+                            }
+                            if (!check) {
+                                // chứng tỏ sản phẩm đã có trong giỏ hàng
+                                users[i].cart[result].quantity = ++users[i].cart[result].quantity;
+                                localStorage.setItem("users", JSON.stringify(users));
+                                // gọi lại hàm  showCart để hiển thị lại số lượng
+                                showCart();
+                            } else {
+                                users[i].cart.push({ ...products[j], quantity: 1 });
+                                localStorage.setItem("users", JSON.stringify(users));
+                                showCart();
+                            }
+                            break;
+                        }
+
+                    }
+                    break;
+                }
+                break;
+
+            }
+        }
+
+
+    //    let a=[
+    //     {
+    //         name:"hoa",
+    //         id:1
+    //     },
+    //     {
+    //            name: "minh",
+    //            id: 12
+    //        }
+    //    ]
+    //    let result= a.findIndex((quy)=>{
+    //         console.log(quy);
+    //    })
+    </script>
+
+
+</body>
+
+</html>

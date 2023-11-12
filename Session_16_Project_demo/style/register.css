@@ -14,6 +14,14 @@ body {
   border-radius: 10px;
   padding: 20px;
 }
+.registerCss__home {
+  position: relative;
+  margin-bottom: 30px;
+}
+.material-symbols-outlined {
+  position: absolute;
+  right: 8px;
+}
 label {
   font-size: 25px;
 }
@@ -32,14 +40,36 @@ input:focus {
 .divBtn {
   text-align: center;
 }
-#registerBtn {
+#signUpBtn {
   height: 35px;
-  width: 100px;
+  width: 120px;
   background-color: rgb(76, 255, 63);
   font-size: 20px;
   border-radius: 5px;
 }
-#registerBtn:hover {
-  color: rgb(247, 0, 0);
+
+#signUpBtn:hover {
+  background-color: yellow;
+  cursor: pointer;
+}
+#signInBtn {
+  height: 35px;
+  width: 120px;
+  background-color: rgb(255, 1, 1);
+  font-size: 20px;
+  border-radius: 5px;
+  color: white;
+}
+
+#signInBtn:hover {
   font-weight: bold;
+  cursor: pointer;
+}
+.material-symbols-outlined:hover {
+  color: red;
+  cursor: pointer;
+}
+.confirmSign {
+  font-size: 20px;
+  margin: 20px 0px 5px;
 }

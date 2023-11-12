@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .login {
+            background-color: #dbdbdb;
+            width: 400px;
+            margin: 50px auto;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .login label {
+            display: inline-block;
+            min-width: 120px;
+        }
+
+        .login input {
+            outline: none;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin: 5px;
+        }
+
+        .login button {
+            margin: 0 auto;
+            padding: 5px;
+            width: 100px;
+            border: none;
+            border-radius: 5px;
+            background-color: tomato;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login">
+        <label for="">email</label>
+        <input id="email" type="text"> <br>
+        <label for="">password</label>
+        <input id="password" type="password"> <br>
+        <button onclick="signIn()">SignIn</button>
+        <p> bạn chưa có tài khoản <a href="./register.html"> SignUp</a></p>
+    </div>
+    <script>
+        function signIn() {
+            // lấy tất cả những user đã đăng kí rồi
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+            //lấy email người dùng nhập
+            let email=document.getElementById("email").value;
+            // lấy password người dùng nhập
+            let password = document.getElementById("password").value;
+
+            for (let i = 0; i < users.length; i++) {
+                if(users[i].email==email&&users[i].password==password){
+                    // lưu id người dùng lên localstorage
+                    localStorage.setItem("idUser",users[i].id);
+                    window.location.href="./index.html";
+                }
+            }
+            console.log("tài khoản không tồn tại!");
+        }
+    </script>
+</body>
+
+</html>

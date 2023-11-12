@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../style/login.css">
-</head>
-<body>
-    <div class="registerCss">
-        <label for="">Email</label>
-        <input type="text" name="" id="" placeholder="nguyenvana@gmail.com">
-        <label for="">Password</label>
-        <input type="password" name="" id="">
-       
-        <div class="divBtn">
-            <button id="loginBtn">Đăng nhập</button>
-        </div>
-</body>
+    <link rel="stylesheet" href="../style/login.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+  </head>
+  <body>
+    <div class="loginCss">
+      <div class="loginCss__home" onclick="homeClick()">
+        <span class="material-symbols-outlined"> home </span>
+      </div>
+
+      <label for="">Email</label>
+      <input
+        type="text"
+        name=""
+        id="emailInputLogin"
+        placeholder="nguyenvana@gmail.com"
+      />
+      <label for="">Password</label>
+      <input type="password" name="" id="passwordInputLogin" />
+
+      <div class="divBtn">
+        <button id="loginBtn" onclick="signInClick()">Đăng nhập</button>
+        <p class="confirmSign">Bạn chưa có tài khoản?</p>
+        <button id="signUpBtn" onclick="signUpClick()">Đăng ký</button>
+      </div>
+      <script src="../js/login.js"></script>
+    </div>
+  </body>
 </html>
