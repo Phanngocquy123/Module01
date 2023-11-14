@@ -1,6 +1,6 @@
-const VND = new Intl.NumberFormat('vi-VN', {
-  style: 'currency',
-  currency: 'VND',
+const VND = new Intl.NumberFormat("vi-VN", {
+  style: "currency",
+  currency: "VND",
 });
 
 function signInClick() {
@@ -9,75 +9,82 @@ function signInClick() {
 function signUpClick() {
   window.location.href = "./pages/register.html";
 }
-let productGoodsList = [
+let productStockList = [
   {
-    name: "bolt1",
+    name: "Bulong lục giác",
     price: 2003,
     img: "./assets/ImgFile/bolt1.jpg",
     id: 100,
   },
   {
-    name: "bolt2",
+    name: "Bulong M10",
     price: 2006,
     img: "./assets/ImgFile/bolt2.jpg",
     id: 101,
   },
   {
-    name: "bolt3",
+    name: "Bulong đầu bằng",
     price: 2090,
     img: "./assets/ImgFile/bolt3.jpg",
     id: 102,
   },
   {
-    name: "bolt4",
+    name: "Bulong lục M8",
     price: 2900,
     img: "./assets/ImgFile/bolt4.jpg",
     id: 103,
   },
   {
-    name: "bolt5",
+    name: "Bulong đầu trụ",
     price: 2700,
     img: "./assets/ImgFile/bolt5.jpg",
     id: 104,
   },
   {
-    name: "bolt6",
+    name: "Bulong đầu dù",
     price: 2500,
     img: "./assets/ImgFile/bolt6.jpg",
     id: 105,
   },
   {
-    name: "bolt7",
+    name: "Bulong ren suốt",
     price: 2050,
     img: "./assets/ImgFile/bolt7.webp",
     id: 106,
   },
   {
-    name: "bolt8",
+    name: "Bulong M12",
     price: 2040,
     img: "./assets/ImgFile/bolt8.webp",
     id: 107,
   },
   {
-    name: "bolt9",
+    name: "Bulong neo",
     price: 2200,
     img: "./assets/ImgFile/bolt9.jpg",
     id: 108,
   },
   {
-    name: "bolt10",
+    name: "Bulong ren lửng",
     price: 2100,
     img: "./assets/ImgFile/bolt10.jpg",
     id: 109,
   },
 ];
-localStorage.setItem("products", JSON.stringify(productGoodsList));
+localStorage.setItem("products", JSON.stringify(productStockList));
 
 let itemPage = 3;
-let totalPage = Math.ceil(productGoodsList.length / itemPage);
+let totalPage = 1;
+/* let totalPage = Math.ceil(productStockList.length / itemPage); */
 let currentPage = 1;
 let start;
 let end;
+
+function totalPageCurrent(pages) {
+  totalPage = Math.ceil(pages.length / itemPage);
+  showListPage;
+}
+totalPageCurrent(productStockList);
 
 function startEnd(current) {
   start = (current - 1) * itemPage;
@@ -85,21 +92,27 @@ function startEnd(current) {
 }
 startEnd(1);
 
-function showProduct() {
+function showProduct(productCurrent) {
   let text = "";
-  for (let i = 0; i < productGoodsList.length; i++) {
+  for (let i = 0; i < productCurrent.length; i++) {
     if (i >= start && i < end) {
       text += `
         <div class="products__content">
              <div class="products__content-img">
-                <img src="${productGoodsList[i].img}" alt="" class="imgBolt" />
+                <img src="${productCurrent[i].img}" alt="" class="imgBolt" />
              </div>
              <div class="products__content-text">
-               <p class="content-detail">Tên sản phẩm: ${productGoodsList[i].name}</p>
-               <p class="content-detail"> Giá: ${VND.format(productGoodsList[i].price)}</p>
+               <p class="content-detail">Tên sản phẩm: ${
+                 productCurrent[i].name
+               }</p>
+               <p class="content-detail"> Giá: ${VND.format(
+                 productCurrent[i].price
+               )}</p>
                <span class="content-addCart">
                   <p class="content-detail">Thêm vào giỏ hàng</p>
-                  <span onclick="addToCartList(${productGoodsList[i].id})" class="material-symbols-outlined checkinCart"> shopping_cart </span>
+                  <span onclick="addToCartList(${
+                    productCurrent[i].id
+                  })" class="material-symbols-outlined checkinCart"> shopping_cart </span>
                </span> 
             </div>
         </div>
@@ -108,7 +121,7 @@ function showProduct() {
   }
   document.getElementsByClassName("products")[0].innerHTML = text;
 }
-showProduct();
+showProduct(productStockList);
 
 function showListPage() {
   let text = "";
@@ -136,7 +149,7 @@ function choosePage(a) {
     }
   }
   startEnd(currentPage);
-  showProduct();
+  showProduct(productStockList);
 }
 
 function nextPage() {
@@ -171,16 +184,16 @@ function addToCartList(idProductBuy) {
           let resultBoughtItemIndex = userLocal[i].cart.findIndex((itemBuy) => {
             return itemBuy.id == productsLocal[j].id;
           });
-          
+
           if (resultBoughtItemIndex != -1) {
             userLocal[i].cart[resultBoughtItemIndex].quantity = ++userLocal[i]
               .cart[resultBoughtItemIndex].quantity;
             localStorage.setItem("userList", JSON.stringify(userLocal));
-            showCartQuantity()
+            showCartQuantity();
           } else {
             userLocal[i].cart.push({ ...productsLocal[j], quantity: 1 });
             localStorage.setItem("userList", JSON.stringify(userLocal));
-            showCartQuantity()
+            showCartQuantity();
           }
           break;
         }
@@ -192,29 +205,47 @@ function addToCartList(idProductBuy) {
 }
 
 function showCartQuantity() {
-  let cartOfUser=JSON.parse(localStorage.getItem("userList"))
+  let cartOfUser = JSON.parse(localStorage.getItem("userList"));
   let checkLoginDone = localStorage.getItem("idUserLogin");
-  if(checkLoginDone){
-    document.getElementsByClassName("signBtn")[0].style.display="none"
-    document.getElementsByClassName("signBtn")[1].style.display="none"
-    let checkUsing=cartOfUser.findIndex((userUsing)=>{
-      return userUsing.id==checkLoginDone
-    })
-    document.getElementsByClassName("helloUserUsing")[0].innerHTML=`Xin chào, ${cartOfUser[checkUsing].name}`
-    document.getElementById("boughtQuantityCart").innerHTML=cartOfUser[checkUsing].cart.length
-  }else{
-    document.getElementsByClassName("helloUserUsing")[0].style.display="none"
-    document.getElementsByClassName("signOut")[0].style.display="none"
+  if (checkLoginDone) {
+    document.getElementsByClassName("signBtn")[0].style.display = "none";
+    document.getElementsByClassName("signBtn")[1].style.display = "none";
+    let checkUsing = cartOfUser.findIndex((userUsing) => {
+      return userUsing.id == checkLoginDone;
+    });
+    document.getElementsByClassName(
+      "helloUserUsing"
+    )[0].innerHTML = `Xin chào, ${cartOfUser[checkUsing].name}`;
+    document.getElementById("boughtQuantityCart").innerHTML =
+      cartOfUser[checkUsing].cart.length;
+  } else {
+    document.getElementsByClassName("helloUserUsing")[0].style.display = "none";
+    document.getElementsByClassName("signOut")[0].style.display = "none";
   }
 }
-showCartQuantity()
+showCartQuantity();
 
 function signOutClick() {
   localStorage.removeItem("idUserLogin");
-  document.getElementsByClassName("signBtn")[0].style.display="block"
-    document.getElementsByClassName("signBtn")[1].style.display="block"
-    document.getElementsByClassName("helloUserUsing")[0].style.display="none"
-    document.getElementsByClassName("signOut")[0].style.display="none"
+  document.getElementsByClassName("signBtn")[0].style.display = "block";
+  document.getElementsByClassName("signBtn")[1].style.display = "block";
+  document.getElementsByClassName("helloUserUsing")[0].style.display = "none";
+  document.getElementsByClassName("signOut")[0].style.display = "none";
+  document.getElementById("boughtQuantityCart").innerText = "0";
+}
+
+/* function searchProductName() {
+  setTimeout(search,5000)
+} */
+
+function searchProductName() {
+  let searchValue = document.getElementById("searchProduct").value;
+  let resultSearch = productStockList.filter((itemSearch) => {
+    return itemSearch.name.indexOf(searchValue) != -1;
+  });
+  showProduct(resultSearch);
+  totalPageCurrent(resultSearch);
+  showListPage();
 }
 
 function checkOutCart() {

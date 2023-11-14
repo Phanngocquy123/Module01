@@ -13,6 +13,7 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         /* CSS phần header */
         .header {
             /* background-color: red; */
@@ -20,32 +21,38 @@
             justify-content: space-around;
             align-items: center;
         }
-        .header .header__logo{
+
+        .header .header__logo {
             height: 50px;
             width: 50px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        .header .header__logo img{
+
+        .header .header__logo img {
             height: 100%;
             width: 100%;
             border-radius: 50%;
             object-fit: cover;
         }
-        .header__navigation ul{
+
+        .header__navigation ul {
             list-style: none;
             display: flex;
             gap: 20px;
         }
-         .header__navigation ul li a{
+
+        .header__navigation ul li a {
             text-decoration: none;
-         }
-         .header__sign{
+        }
+
+        .header__sign {
             display: flex;
             gap: 10px;
-         }
-         .header__sign .btn{
+        }
+
+        .header__sign .btn {
             border: none;
             padding: 8px;
             border-radius: 5px;
@@ -53,12 +60,14 @@
             margin: 5px;
             background-color: rgb(6, 235, 235);
 
-         }
-         .header__sign .cart{
-           
+        }
+
+        .header__sign .cart {
+
             position: relative;
-         }
-          .header__sign .cart .cart-total{
+        }
+
+        .header__sign .cart .cart-total {
             border: 1px solid green;
             display: inline-block;
             width: 20px;
@@ -69,8 +78,22 @@
             position: absolute;
             bottom: 5px;
             color: red;
-         }
+        }
 
+        /* css phần tìm kiếm */
+        .search {
+            width: 600px;
+
+            margin: 0 auto;
+        }
+
+        .search input {
+            width: 100%;
+            padding: 5px;
+            outline: none;
+            border-radius: 5px;
+            border: 1px solid rgb(5, 241, 210);
+        }
 
         .product {
             display: flex;
@@ -140,7 +163,7 @@
         </div>
         <div class="header__navigation">
             <ul>
-                <li><a href="" >Sản phẩm</a> </li>
+                <li><a href="">Sản phẩm</a> </li>
                 <li><a href="">Giới thiệu</a></li>
                 <li><a href="">Liên hệ</a> </li>
             </ul>
@@ -148,16 +171,20 @@
         <div class="header__sign">
             <span id="hello"> hello </span>
             <button class=" btn header__sign--signIn">
-                 <a href="./login.html">signIn</a> 
+                <a href="./login.html">signIn</a>
             </button>
-            <button class=" btn header__sign--signUp"> 
-                 <a href="./register.html">signUp</a href="./register.html"> 
+            <button class=" btn header__sign--signUp">
+                <a href="./register.html">signUp</a href="./register.html">
             </button>
             <div id="cart" class="cart" style="display: none;">
-               <a href="./cart.html">Cart</a>
+                <a href="./cart.html">Cart</a>
                 <span class="cart-total">1</span>
             </div>
         </div>
+    </div>
+    <!-- thanh tìm kiếm sản phẩm -->
+    <div class="search">
+        <input type="text" id="search" oninput="searchProduct()" placeholder="tìm kiếm theo tên bánh">
     </div>
     <div class="product">
         <!-- <div class="product__item">
@@ -231,84 +258,84 @@
         -6.end   = start+totalItem  =  3 6 9 12
      -->
     <script>
-       function showCart() {
-         let isLogin = localStorage.getItem("idUser");
-           if (isLogin) {
-               document.getElementsByClassName("header__sign--signIn")[0].style.display = "none";
-               document.getElementsByClassName("header__sign--signUp")[0].style.display = "none";
-               let user = JSON.parse(localStorage.getItem("users"));
-               let userName = user.find((item) => {
-                   return item.id == isLogin
-               })
-               document.getElementById("hello").innerHTML = `hello ${userName.name}`;
-               document.getElementById("cart").style.display = "block";
-               document.getElementsByClassName("cart-total")[0].innerHTML = userName.cart.length;
+        function showCart() {
+            let isLogin = localStorage.getItem("idUser");
+            if (isLogin) {
+                document.getElementsByClassName("header__sign--signIn")[0].style.display = "none";
+                document.getElementsByClassName("header__sign--signUp")[0].style.display = "none";
+                let user = JSON.parse(localStorage.getItem("users"));
+                let userName = user.find((item) => {
+                    return item.id == isLogin
+                })
+                document.getElementById("hello").innerHTML = `hello ${userName.name}`;
+                document.getElementById("cart").style.display = "block";
+                document.getElementsByClassName("cart-total")[0].innerHTML = userName.cart.length;
 
-           } else {
-               document.getElementById("hello").style.display = "none";
-           }
-       }
-       showCart();
+            } else {
+                document.getElementById("hello").style.display = "none";
+            }
+        }
+        showCart();
         // tạo 1 mảng chứa danh sách sản phẩm
         let products = [
             {
-                name: "bánh ngọt1",
+                name: "bánh bao",
                 price: 50000,
                 image: "./image/photo-1559735614-e35ef860a156.avif",
                 id: 100,
-                stock:50,
+                stock: 50,
             },
             {
-                name: "bánh ngọt2",
+                name: "bánh mì",
                 price: 50000,
                 image: "./image/photo-1560156710-0580247f9f69.avif",
                 id: 101,
-                decription:"bánh thơm ngon mời bạn ăn nha"
+                decription: "bánh thơm ngon mời bạn ăn nha"
             },
             {
-                name: "bánh ngọt3",
+                name: "bánh kem",
                 price: 50000,
                 image: "./image/photo-1541491008689-b5d3c6615e2e.avif",
                 id: 102,
             },
             {
-                name: "bánh ngọt4",
+                name: "bánh chuối",
                 price: 50000,
                 image: "./image/photo-1585220177022-3fdf02bd9da0.avif",
                 id: 103,
             },
             {
-                name: "bánh ngọt5",
+                name: "bánh giò",
                 price: 50000,
                 image: "./image/photo-1624225202979-a4aacc5dbeb6.avif",
                 id: 104,
             },
             {
-                name: "bánh ngọt6",
+                name: "bánh chưng",
                 price: 50000,
                 image: "./image/photo-1624225203017-77f910f61d5c.avif",
                 id: 105,
             },
             {
-                name: "bánh ngọt7",
+                name: "bánh cốm",
                 price: 50000,
                 image: "./image/photo-1624225203540-ed60f8826307.avif",
                 id: 106,
             },
             {
-                name: "bánh ngọt8",
+                name: "bánh bông lan",
                 price: 50000,
                 image: "./image/premium_photo-1661331799416-700af74c3213.avif",
                 id: 107,
             },
             {
-                name: "bánh ngọt9",
+                name: "bánh khảo",
                 price: 50000,
                 image: "./image/premium_photo-1664472680005-b9976125009d.avif",
                 id: 108,
             },
             {
-                name: "bánh ngọt10",
+                name: "bánh rán",
                 price: 50000,
                 image: "./image/premium_photo-1690214491960-d447e38d0bd0.avif",
                 id: 109,
@@ -317,7 +344,7 @@
         localStorage.setItem("products", JSON.stringify(products));
         //
         let itemPage = 3;
-        let totalPage = Math.ceil(products.length / itemPage);
+        let totalPage = 1;
         let currentPage = 1;
         let start;
         let end;
@@ -327,25 +354,30 @@
             end = current * itemPage;//9
         }
         startEnd(1);
+        //function tính totalpage
+        function totalPages(pages) {
+            totalPage = Math.ceil(pages.length / itemPage);
+        }
+        totalPages(products);
         // viết function hiển thị danh sách sản phẩm
-        function showProduct() {
+        function showProduct(param) {
             let text = "";
-            for (let i = 0; i < products.length; i++) {
+            for (let i = 0; i < param.length; i++) {
                 if (i >= start && i < end) {
                     text +=
                         `
                             <div class="product__item">
                                 <div class="product__item--image">
-                                    <img src="${products[i].image}" alt="">
+                                    <img src="${param[i].image}" alt="">
                                 </div>
                                 <p class="product__item--name">
-                                    name : ${products[i].name}
+                                    name : ${param[i].name}
                                 </p>
                                 <p class="product__item--price">
-                                    price : ${products[i].price}
-                                    <button onclick=detail(${products[i].id})> detail</button>
+                                    price : ${param[i].price}
+                                    <button onclick=detail(${param[i].id})> detail</button>
                                 </p>
-                                <p onclick=addToCart(${products[i].id}) class="product__item--cart">
+                                <p onclick=addToCart(${param[i].id}) class="product__item--cart">
                                     buy cart
                                     <span class="material-symbols-outlined">
                                         shopping_cart
@@ -357,7 +389,7 @@
             }
             document.getElementsByClassName("product")[0].innerHTML = text;
         }
-        showProduct();
+        showProduct(products);
         // function hiển thị số trang sản phẩm
         function showListPage() {
             let text = "";
@@ -396,7 +428,7 @@
                 }
             }
             startEnd(a);
-            showProduct();
+            showProduct(products);
         }
         // function next ảnh tiếp theo
         function nextPage() {
@@ -443,15 +475,15 @@
                             // let result = users[i].cart.findIndex((quy) => {
                             //     return quy.id == products[j].id
                             // })
-                            let check=true;
+                            let check = true;
                             let result;
                             for (let k = 0; k < users[i].cart.length; k++) {
-                               if(users[i].cart[k].id==idProduct){
-                                    check=false;
-                                    result=k;
+                                if (users[i].cart[k].id == idProduct) {
+                                    check = false;
+                                    result = k;
                                     break;
-                               }
-                                
+                                }
+
                             }
                             if (!check) {
                                 // chứng tỏ sản phẩm đã có trong giỏ hàng
@@ -474,21 +506,19 @@
 
             }
         }
+        /// function tìm kiếm sản phẩm
+        function searchProduct(params) {
+            let searchName = document.getElementById("search").value;
+            let result = products.filter((item) => {
+                return item.name.indexOf(searchName) != -1;
+            })
+            totalPages(result);
+            console.log(result);
+            showListPage()
+            showProduct(result);
 
+        }
 
-    //    let a=[
-    //     {
-    //         name:"hoa",
-    //         id:1
-    //     },
-    //     {
-    //            name: "minh",
-    //            id: 12
-    //        }
-    //    ]
-    //    let result= a.findIndex((quy)=>{
-    //         console.log(quy);
-    //    })
     </script>
 
 

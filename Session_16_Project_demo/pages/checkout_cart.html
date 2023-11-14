@@ -5,23 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="../style/checkout_cart.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   </head>
   <body>
+    <div class="tableCart">
     <table border="1px">
       <thead>
         <tr>
-          <th>STT</th>
-          <th>SẢN PHẨM</th>
-          <th>HÌNH ẢNH</th>
+          <th class="boderActive">STT</th>
+          <th class="boderActive">SẢN PHẨM</th>
+          <th class="boderActive">HÌNH ẢNH</th>
           <th>GIÁ</th>
           <th>SỐ LƯỢNG</th>
           <th>TẠM TÍNH</th>
-          <th>XÓA</th>
+          <th class="boderHidden"></th>
         </tr>
       </thead>
       <tbody id="buyTableTotal"></tbody>
+      <tfoot>
+        <tr>
+          <th colspan="4" class="th-back">
+            <button class="btnFoot-back" onclick="homeBack()"> << TIẾP TỤC XEM SẢN PHẨM <<</button>
+          </th>
+          <th colspan="2" class="th-pay">
+            <button class="btnFoot-pay" onclick="payMoney()">THANH TOÁN</button>
+          </th>
+          <th class="th-spaceD"></th>
+        </tr>
+      </tfoot>
+      <tfoot>
+        <tr>
+          <th colspan="5">Tổng thanh toán</th>
+          <th id="total" ></th>
+          <th class="boderHidden"></th>
+        </tr>
+      </tfoot>
     </table>
-
+  </div>
     <script src="../js/checkout_cart.js">
     </script>
   </body>
