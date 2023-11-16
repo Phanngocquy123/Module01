@@ -34,8 +34,8 @@ function checkOutCart() {
       }
       document.getElementById("buyTableTotal").innerHTML = textOut;
       document.getElementById("total").innerHTML=`${VND.format(Moneytotal)}`
+      break;
     }
-    break;
   }
 }
 checkOutCart();

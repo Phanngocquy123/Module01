@@ -6,10 +6,13 @@ function signInClick() {
   for (let i = 0; i < userLogin.length; i++) {
     if (emailValue == "" && passwordValue == "") {
       alert("Bạn chưa nhập thông tin");
+      return;
     } else if (userLogin[i].email != "" && passwordValue == "") {
       alert("Bạn chưa nhập mật khẩu");
+      return;
     } else if (emailValue == "" && userLogin[i].password != "") {
       alert("Bạn chưa nhập email");
+      return;
     } else if (
       userLogin[i].email == emailValue &&
       userLogin[i].password == passwordValue

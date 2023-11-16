@@ -75,7 +75,6 @@ localStorage.setItem("products", JSON.stringify(productStockList));
 
 let itemPage = 3;
 let totalPage = 1;
-/* let totalPage = Math.ceil(productStockList.length / itemPage); */
 let currentPage = 1;
 let start;
 let end;
@@ -179,6 +178,10 @@ function addToCartList(idProductBuy) {
 
   for (let i = 0; i < userLocal.length; i++) {
     if (userLocal[i].id == checkIdLogin) {
+      if (userLocal[i].status == 0) {
+        alert("Tài khoản của bạn đã bị khóa");
+        return;
+      }
       for (let j = 0; j < productsLocal.length; j++) {
         if (productsLocal[j].id == idProductBuy) {
           let resultBoughtItemIndex = userLocal[i].cart.findIndex((itemBuy) => {
@@ -190,17 +193,18 @@ function addToCartList(idProductBuy) {
               .cart[resultBoughtItemIndex].quantity;
             localStorage.setItem("userList", JSON.stringify(userLocal));
             showCartQuantity();
+            alert("Sản phẩm đã được thêm vào giỏ hàng");
           } else {
             userLocal[i].cart.push({ ...productsLocal[j], quantity: 1 });
             localStorage.setItem("userList", JSON.stringify(userLocal));
             showCartQuantity();
+            alert("Sản phẩm đã được thêm vào giỏ hàng");
           }
           break;
         }
       }
       break;
     }
-    break;
   }
 }
 
@@ -234,11 +238,7 @@ function signOutClick() {
   document.getElementById("boughtQuantityCart").innerText = "0";
 }
 
-/* function searchProductName() {
-  setTimeout(search,5000)
-} */
-
-function searchProductName() {
+function startSearch() {
   let searchValue = document.getElementById("searchProduct").value;
   let resultSearch = productStockList.filter((itemSearch) => {
     return itemSearch.name.indexOf(searchValue) != -1;
@@ -246,6 +246,15 @@ function searchProductName() {
   showProduct(resultSearch);
   totalPageCurrent(resultSearch);
   showListPage();
+}
+let timeId;
+function search(param1, param2) {
+  if (timeId) {
+    clearTimeout(timeId);
+  }
+  timeId = setTimeout(() => {
+    param1();
+  }, param2);
 }
 
 function checkOutCart() {
