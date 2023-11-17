@@ -9,70 +9,81 @@ function signInClick() {
 function signUpClick() {
   window.location.href = "./pages/register.html";
 }
-let productStockList = [
+let productStockList1 = [
   {
     name: "Bulong lục giác",
     price: 2003,
-    img: "./assets/ImgFile/bolt1.jpg",
+    img: "../assets/ImgFile/bolt1.jpg",
     id: 100,
+    actived:true,
   },
   {
     name: "Bulong M10",
     price: 2006,
-    img: "./assets/ImgFile/bolt2.jpg",
+    img: "../assets/ImgFile/bolt2.jpg",
     id: 101,
+    actived:true,
   },
   {
     name: "Bulong đầu bằng",
     price: 2090,
-    img: "./assets/ImgFile/bolt3.jpg",
+    img: "../assets/ImgFile/bolt3.jpg",
     id: 102,
+    actived:true,
   },
   {
     name: "Bulong lục M8",
     price: 2900,
-    img: "./assets/ImgFile/bolt4.jpg",
+    img: "../assets/ImgFile/bolt4.jpg",
     id: 103,
+    actived:true,
   },
   {
     name: "Bulong đầu trụ",
     price: 2700,
-    img: "./assets/ImgFile/bolt5.jpg",
+    img: "../assets/ImgFile/bolt5.jpg",
     id: 104,
+    actived:true,
   },
   {
     name: "Bulong đầu dù",
     price: 2500,
-    img: "./assets/ImgFile/bolt6.jpg",
+    img: "../assets/ImgFile/bolt6.jpg",
     id: 105,
+    actived:true,
   },
   {
     name: "Bulong ren suốt",
     price: 2050,
     img: "./assets/ImgFile/bolt7.webp",
     id: 106,
+    actived:true,
   },
   {
     name: "Bulong M12",
     price: 2040,
     img: "./assets/ImgFile/bolt8.webp",
     id: 107,
+    actived:true,
   },
   {
     name: "Bulong neo",
     price: 2200,
     img: "./assets/ImgFile/bolt9.jpg",
     id: 108,
+    actived:true,
   },
   {
     name: "Bulong ren lửng",
     price: 2100,
     img: "./assets/ImgFile/bolt10.jpg",
     id: 109,
+    actived:true,
   },
 ];
-localStorage.setItem("products", JSON.stringify(productStockList));
+/* localStorage.setItem("products", JSON.stringify(productStockList1)); */
 
+let productStockList = JSON.parse(localStorage.getItem("products")) || [];
 let itemPage = 3;
 let totalPage = 1;
 let currentPage = 1;
@@ -94,16 +105,14 @@ startEnd(1);
 function showProduct(productCurrent) {
   let text = "";
   for (let i = 0; i < productCurrent.length; i++) {
-    if (i >= start && i < end) {
+    if (i >= start && i < end && productCurrent[i].actived == true) {
       text += `
         <div class="products__content">
              <div class="products__content-img">
                 <img src="${productCurrent[i].img}" alt="" class="imgBolt" />
              </div>
              <div class="products__content-text">
-               <p class="content-detail">Tên sản phẩm: ${
-                 productCurrent[i].name
-               }</p>
+               <p class="content-detail">Tên sản phẩm:${productCurrent[i].name}</p>
                <p class="content-detail"> Giá: ${VND.format(
                  productCurrent[i].price
                )}</p>
