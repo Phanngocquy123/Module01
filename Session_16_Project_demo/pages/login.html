@@ -16,15 +16,23 @@
         <span class="material-symbols-outlined"> home </span>
       </div>
 
-      <label for="">Email</label>
+      <label for="" id="emailLabel">Email</label>
       <input
         type="text"
-        name=""
         id="emailInputLogin"
         placeholder="nguyenvana@gmail.com"
       />
-      <label for="">Password</label>
+      <div class="hiddenDiv">
+        <span class="hiddenSpan">1</span>
+        <span class="emailNotice notice"></span>
+      </div>
+
+      <label for="">Mật khẩu</label>
       <input type="password" name="" id="passwordInputLogin" />
+      <div class="hiddenDiv">
+        <span class="hiddenSpan">1</span>
+        <span class="passNotice notice"></span>
+      </div>
 
       <div class="divBtn">
         <button id="loginBtn" onclick="signInClick()">Đăng nhập</button>

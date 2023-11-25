@@ -5,34 +5,38 @@
 }
 body {
   display: flex;
+  justify-content: center;
+  margin-top: 30px;
 }
 .registerCss {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   width: 35%;
-  margin: 50px auto;
   border: double 7px red;
   border-radius: 10px;
-  padding: 20px;
-}
-.registerCss__home {
+  padding: 15px;
   position: relative;
-  margin-bottom: 30px;
 }
+
 .material-symbols-outlined {
   position: absolute;
-  right: 8px;
+  right: 15px;
+  top: 15;
 }
 label {
-  font-size: 25px;
+  font-size: 20px;
+}
+#nameLabel{
+  margin-top: 30px;
 }
 input {
   height: 35px;
-  width: 98%;
-  margin-bottom: 20px;
+  width: 100%;
   border-radius: 5px;
   text-indent: 10px;
-  font-size: 20px;
+  font-size: 17px;
   border-color: #dbdb;
+  margin-bottom: 3px;
 }
 input:focus {
   background-color: antiquewhite;
@@ -40,12 +44,24 @@ input:focus {
 .divBtn {
   text-align: center;
 }
+
+.hiddenDiv{
+  text-align: right;
+}
+.hiddenSpan{
+  visibility: hidden;
+}
+.notice{
+color: red;
+margin-left: 5px;
+}
 #signUpBtn {
   height: 35px;
-  width: 120px;
+  width: 100px;
   background-color: rgb(76, 255, 63);
-  font-size: 20px;
+  font-size: 17px;
   border-radius: 5px;
+  margin-top: 10px;
 }
 
 #signUpBtn:hover {
@@ -54,9 +70,9 @@ input:focus {
 }
 #signInBtn {
   height: 35px;
-  width: 120px;
+  width: 100px;
   background-color: rgb(255, 1, 1);
-  font-size: 20px;
+  font-size: 17px;
   border-radius: 5px;
   color: white;
 }
@@ -70,6 +86,6 @@ input:focus {
   cursor: pointer;
 }
 .confirmSign {
-  font-size: 20px;
-  margin: 20px 0px 5px;
+  font-size: 15px;
+  margin: 13px 0px 5px;
 }

@@ -4,84 +4,84 @@ const VND = new Intl.NumberFormat("vi-VN", {
 });
 
 function signInClick() {
-  window.location.href = "./pages/login.html";
+  window.location.href = "../pages/login.html";
 }
 function signUpClick() {
-  window.location.href = "./pages/register.html";
+  window.location.href = "../pages/register.html";
 }
-let productStockList1 = [
+/* let productStockList1 = [
   {
     name: "Bulong lục giác",
     price: 2003,
     img: "../assets/ImgFile/bolt1.jpg",
-    id: 100,
-    actived:true,
+    status:true,
+    id:Math.floor(Math.random() * 84345) + new Date().getMilliseconds(),
   },
   {
     name: "Bulong M10",
     price: 2006,
     img: "../assets/ImgFile/bolt2.jpg",
-    id: 101,
-    actived:true,
+    status:true,
+    id:Math.floor(Math.random() * 84345) + new Date().getMilliseconds(),
   },
   {
     name: "Bulong đầu bằng",
     price: 2090,
     img: "../assets/ImgFile/bolt3.jpg",
-    id: 102,
-    actived:true,
+    status:true,
+    id:Math.floor(Math.random() * 84345) + new Date().getMilliseconds(),
   },
   {
     name: "Bulong lục M8",
     price: 2900,
     img: "../assets/ImgFile/bolt4.jpg",
-    id: 103,
-    actived:true,
+    status:true,
+    id:Math.floor(Math.random() * 84345) + new Date().getMilliseconds(),
   },
   {
     name: "Bulong đầu trụ",
     price: 2700,
     img: "../assets/ImgFile/bolt5.jpg",
-    id: 104,
-    actived:true,
+    status:true,
+    id:Math.floor(Math.random() * 84345) + new Date().getMilliseconds(),
   },
   {
     name: "Bulong đầu dù",
     price: 2500,
     img: "../assets/ImgFile/bolt6.jpg",
-    id: 105,
-    actived:true,
+    status:true,
+    id:Math.floor(Math.random() * 84345) + new Date().getMilliseconds(),
   },
   {
     name: "Bulong ren suốt",
     price: 2050,
-    img: "./assets/ImgFile/bolt7.webp",
-    id: 106,
-    actived:true,
+    img: "../assets/ImgFile/bolt7.webp",
+    status:true,
+    id:Math.floor(Math.random() * 84345) + new Date().getMilliseconds(),
   },
   {
     name: "Bulong M12",
     price: 2040,
-    img: "./assets/ImgFile/bolt8.webp",
-    id: 107,
-    actived:true,
+    img: "../assets/ImgFile/bolt8.webp",
+    status:true,
+    id:Math.floor(Math.random() * 84345) + new Date().getMilliseconds(),
   },
   {
     name: "Bulong neo",
     price: 2200,
-    img: "./assets/ImgFile/bolt9.jpg",
-    id: 108,
-    actived:true,
+    img: "../assets/ImgFile/bolt9.jpg",
+    status:true,
+    id:Math.floor(Math.random() * 84345) + new Date().getMilliseconds(),
   },
   {
     name: "Bulong ren lửng",
     price: 2100,
-    img: "./assets/ImgFile/bolt10.jpg",
-    id: 109,
-    actived:true,
+    img: "../assets/ImgFile/bolt10.jpg",
+    status:true,
+    id:Math.floor(Math.random() * 84345) + new Date().getMilliseconds(),
   },
 ];
-/* localStorage.setItem("products", JSON.stringify(productStockList1)); */
+localStorage.setItem("products", JSON.stringify(productStockList1)); */
 
 let productStockList = JSON.parse(localStorage.getItem("products")) || [];
 let itemPage = 3;
@@ -105,14 +105,14 @@ startEnd(1);
 function showProduct(productCurrent) {
   let text = "";
   for (let i = 0; i < productCurrent.length; i++) {
-    if (i >= start && i < end && productCurrent[i].actived == true) {
+    if (i >= start && i < end && productCurrent[i].status == true) {
       text += `
         <div class="products__content">
              <div class="products__content-img">
                 <img src="${productCurrent[i].img}" alt="" class="imgBolt" />
              </div>
              <div class="products__content-text">
-               <p class="content-detail">Tên sản phẩm:${productCurrent[i].name}</p>
+               <p class="content-detail">Sản phẩm:${productCurrent[i].name}</p>
                <p class="content-detail"> Giá: ${VND.format(
                  productCurrent[i].price
                )}</p>
@@ -127,7 +127,7 @@ function showProduct(productCurrent) {
         `;
     }
   }
-  document.getElementsByClassName("products")[0].innerHTML = text;
+  document.getElementsByClassName("products__detail")[0].innerHTML = text;
 }
 showProduct(productStockList);
 
@@ -181,14 +181,18 @@ function addToCartList(idProductBuy) {
   let checkIdLogin = localStorage.getItem("idUserLogin");
 
   if (!checkIdLogin) {
-    alert("Vui lòng đăng nhập để mua hàng");
+    document.getElementById("showNotice").textContent =
+      "Hãy đăng nhập để mua hàng";
+    showCartNotice();
     return;
   }
 
   for (let i = 0; i < userLocal.length; i++) {
     if (userLocal[i].id == checkIdLogin) {
       if (userLocal[i].status == 0) {
-        alert("Tài khoản của bạn đã bị khóa");
+        document.getElementById("showNotice").textContent =
+          "Tài khoản của bạn đã bị khóa";
+        showCartNotice();
         return;
       }
       for (let j = 0; j < productsLocal.length; j++) {
@@ -202,12 +206,12 @@ function addToCartList(idProductBuy) {
               .cart[resultBoughtItemIndex].quantity;
             localStorage.setItem("userList", JSON.stringify(userLocal));
             showCartQuantity();
-            alert("Sản phẩm đã được thêm vào giỏ hàng");
+            showCartNotice();
           } else {
             userLocal[i].cart.push({ ...productsLocal[j], quantity: 1 });
             localStorage.setItem("userList", JSON.stringify(userLocal));
             showCartQuantity();
-            alert("Sản phẩm đã được thêm vào giỏ hàng");
+            showCartNotice();
           }
           break;
         }
@@ -215,6 +219,14 @@ function addToCartList(idProductBuy) {
       break;
     }
   }
+}
+
+function showCartNotice() {
+  let x = document.getElementById("showNotice");
+  x.className = "show";
+  setTimeout(function () {
+    x.className = x.className.replace("show", "");
+  }, 3000);
 }
 
 function showCartQuantity() {
@@ -228,12 +240,12 @@ function showCartQuantity() {
     });
     document.getElementsByClassName(
       "helloUserUsing"
-    )[0].innerHTML = `Xin chào, ${cartOfUser[checkUsing].name}`;
+    )[0].innerHTML = `Xin chào,</br> ${cartOfUser[checkUsing].name}`;
     document.getElementById("boughtQuantityCart").innerHTML =
       cartOfUser[checkUsing].cart.length;
   } else {
-    document.getElementsByClassName("helloUserUsing")[0].style.display = "none";
-    document.getElementsByClassName("signOut")[0].style.display = "none";
+    document.getElementsByClassName("header__fist-helloBtn")[0].style.display =
+      "none";
   }
 }
 showCartQuantity();
@@ -242,9 +254,8 @@ function signOutClick() {
   localStorage.removeItem("idUserLogin");
   document.getElementsByClassName("signBtn")[0].style.display = "block";
   document.getElementsByClassName("signBtn")[1].style.display = "block";
-  document.getElementsByClassName("helloUserUsing")[0].style.display = "none";
-  document.getElementsByClassName("signOut")[0].style.display = "none";
-  document.getElementById("boughtQuantityCart").innerText = "0";
+  document.getElementsByClassName("header__fist-helloBtn")[0].style.display =
+    "none";
 }
 
 function startSearch() {
@@ -267,5 +278,50 @@ function search(param1, param2) {
 }
 
 function checkOutCart() {
-  window.location.href = "./pages/checkout_cart.html";
+  let idCart = localStorage.getItem("idUserLogin") || [];
+  console.log(idCart);
+  let userCart = JSON.parse(localStorage.getItem("userList")) || [];
+  console.log(userCart);
+  if (idCart == "") {
+    document.getElementById("showNotice").textContent = "Bạn chưa đăng nhập";
+    showCartNotice();
+    return;
+  } else {
+    for (let i = 0; i < userCart.length; i++) {
+      if (userCart[i].id == idCart) {
+        if (userCart[i].status == 0) {
+          document.getElementById("showNotice").textContent =
+            "Tài khoản của bạn đã bị khóa";
+          showCartNotice();
+          return;
+        }
+      }
+    }
+  }
+  window.location.href = "../pages/checkout_cart.html";
+}
+
+let slideIndex;
+function showSlides() {
+ 
+  let slides = document.getElementsByClassName("header-img");
+  let dots = document.getElementsByClassName("dot");
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace("active","");
+  }
+  slides[slideIndex].style.display = "block";
+  dots[slideIndex].className += " active";  /* không xóa khoảng trống */
+  slideIndex++;
+  if (slideIndex > slides.length-1) {
+    slideIndex = 0;
+  }
+  setTimeout(showSlides, 5000);
+}
+showSlides(slideIndex = 0);
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
 }

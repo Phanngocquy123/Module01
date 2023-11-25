@@ -7,112 +7,53 @@
     <link rel="stylesheet" href="../style/admin_product.css" />
   </head>
   <body>
-    <!-- 
-        Thêm - sửa - xóa -sản phẩm
-     -->
-    <form action="">
-      <label for="">Tên sản phẩm</label>
-      <input class="addProduct" id="addNameProduct" type="text" /> <br />
-      <label for="">Img</label>
-      <input
-        class="addProduct"
-        id="addImgProduct"
-        type="file"
-        onchange="changeImage(this)"
-      />
-      <br />
-      <label>Price</label>
-      <input class="addProduct" id="addPriceProduct" type="text" /> <br />
-      <button class="saveBtn" onclick="saveProduct()">Save</button>
-    </form>
-
-    <table border="1px">
-      <thead>
-        <tr>
-          <th>1</th>
-          <th>Tên sản phẩm</th>
-          <th>ID</th>
-          <th>Img</th>
-          <th>Price</th>
-          <th>Trạng thái</th>
-          <th>Edit</th>
-          <th>Delete</th>
-        </tr>
-      </thead>
-      <tbody id="productsCtl"></tbody>
-    </table>
+    <div class="adminControl">
+      <span class="adminControl-btn" onclick="home()">Trang chủ</span>
+      <span class="adminControl-btn" onclick="orderC()">Quản lý đơn hàng</span>
+      <span class="adminControl-btn" onclick="userC()">Quản lý người dùng</span>
+    </div>
+    <p class="product-p">Quản lý sản phẩm</p>
+    <div id="productControl">
+      <div id="productControl__add">
+        <div class="productControl__btn">
+          <p class="contentP">Thêm sản phẩm:</p>
+          <div class="productControl__btnAddCancel" >
+            <button class="addBtn" onclick="addProduct()">Thêm</button>
+            <button class="cancelBtn" onclick="cancelEdit()">Hủy</button>
+          </div>
+        </div>
+        <label class="labelName">Tên sản phẩm:</label>
+        <input id="addNameProduct" type="text" /> <br />
+        <label class="labelName">Giá:</label>
+        <input  id="addPriceProduct" type="text" /> <br />
+        <label class="labelName">Hình ảnh:</label>
+        <label for="addImgProduct" class="addImgBtn">Chọn ảnh</label>
+        <input
+          id="addImgProduct"
+          type="file"
+          onchange="changeImage(this)"
+        />
+        <br/>
+        <div id="spaceImg"></div>
+      </div>
+      <div id="productControl__show">
+        <table border="1px">
+          <thead>
+            <tr>
+              <th>Stt</th>
+              <th>Tên sản phẩm</th>
+              <th>ID</th>
+              <th>Hình ảnh</th>
+              <th>Giá</th>
+              <th>Trạng thái</th>
+              <th>Sửa</th>
+              <th>Xóa</th>
+            </tr>
+          </thead>
+          <tbody id="productsCtl"></tbody>
+        </table>
+      </div>
+    </div>
   </body>
-  <script>
-        function showProductControl() {
-          let productControl = JSON.parse(localStorage.getItem("products"));
-          let text = "";
-          for (let i = 0; i < productControl.length; i++) {
-            let onActived =
-              productControl[i].actived == true
-                ? "Đang hoạt động"
-                : "Không hoạt động";
-            text += `
-                <tr>
-                    <td>${i + 1}</td>
-                    <td>${productControl[i].name}</td>
-                    <td>${productControl[i].id}</td>
-                    <td><img id="imgBolt" src="${
-                      productControl[i].img
-                    }" alt=""> </td>
-                    <td>${productControl[i].price}</td>
-                    <td>${onActived}</td>
-                    <td><button onclick="editClick()">Edit</button></td>
-                    <td><button onclick="deleteClick(${
-                      productControl[i].id
-                    })">Delete</button></td>
-                </tr>
-                `;
-          }
-          document.getElementById("productsCtl").innerHTML = text;
-        }
-        showProductControl();
-
-        function deleteClick(id) {
-          productControl = JSON.parse(localStorage.getItem("products"));
-          for (let i = 0; i < productControl.length; i++) {
-            if (productControl[i].id == id) {
-              let confirmDelete = confirm("Bạn có muốn xóa không");
-              if (confirmDelete) {
-                productControl[i].actived = false;
-                localStorage.setItem("products", JSON.stringify(productControl));
-                showProductControl();
-              }
-            }
-          }
-        }
-        let imgBase64 = "";
-        function changeImage(a) {
-          /* console.log(a); */
-          var fileImg = a.files[0];
-          /* console.log("aaaa",fileImg); */
-          var khoiTao = new FileReader();
-          khoiTao.onloadend = function name(params) {
-            /* console.log(khoiTao.result); */
-            imgBase64 = khoiTao.result;
-          };
-          khoiTao.readAsDataURL(fileImg);
-        }
-
-        function saveProduct() {
-            let productSave = JSON.parse(localStorage.getItem("products"))||[]
-          let nameValue = document.getElementById("addNameProduct").value;
-          let priceValue = document.getElementById("addPriceProduct").value;
-
-          let addObj = {
-            name: nameValue,
-            price: priceValue,
-            img: imgBase64,
-            id: Math.floor(Math.random() * 848985956562) + new Date().getMilliseconds(),
-            actived: true,
-          };
-    productSave.push(addObj)
-    localStorage.setItem("products",JSON.stringify(productSave))
-    showProductControl()
-        }
-  </script>
+  <script src="../js/admin_product.js"></script>
 </html>

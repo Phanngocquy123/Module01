@@ -15,16 +15,41 @@
       <div class="registerCss__home" onclick="homeClick()">
         <span class="material-symbols-outlined"> home </span>
       </div>
-      <label for="">Name</label>
-      <input type="text" id="nameInput" placeholder="Nguyễn Văn A" />
+      <label for="" id="nameLabel">Tên</label>
+      <input type="text" id="nameInput" placeholder="Nguyễn Văn A"/>
+      <div class="hiddenDiv">
+        <span class="hiddenSpan">1</span>
+        <span id="nameNotice" class="notice"></span>
+      </div>
+
       <label for="">Email</label>
       <input type="text" id="emailInput" placeholder="nguyenvana@gmail.com" />
+      <div class="hiddenDiv">
+        <span class="hiddenSpan">1</span>
+        <span id="emailNotice" class="notice"></span>
+      </div>
+
       <label for="">SĐT</label>
-      <input type="number" id="sdtInput">
-      <label for="">Password</label>
-      <input type="password" name="" id="passwordInput" />
-      <label for="">ConfirmPassword</label>
+      <input type="number" id="sdtInput" placeholder="1234567890">
+      <div class="hiddenDiv">
+        <span class="hiddenSpan">1</span>
+        <span id="phoneNotice" class="notice"></span>
+      </div>
+
+      <label for="">Mật khẩu</label>
+      <input type="password" name="" id="passwordInput"/>
+      <div class="hiddenDiv">
+        <span class="hiddenSpan">1</span>
+        <span id="passNotice" class="notice"></span>
+      </div>
+
+      <label for="">Xác nhận mật khẩu</label>
       <input type="password" name="" id="confirmPasswordInput" />
+      <div class="hiddenDiv">
+        <span class="hiddenSpan">1</span>
+        <span id="confirmPassNotice" class="notice"></span>
+      </div>
+
       <div class="divBtn">
         <button id="signUpBtn" onclick="signUpClick()">Đăng ký</button>
         <p class="confirmSign">Bạn đã có tài khoản?</p>

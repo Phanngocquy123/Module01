@@ -5,17 +5,20 @@
 }
 body {
   display: flex;
+  justify-content: center;
 }
 .loginCss {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   width: 35%;
-  margin: 50px auto;
   border: double 7px rgb(21, 0, 255);
   border-radius: 10px;
-  padding: 20px;
+  padding: 15px;
+  position: relative;
 }
 .loginCss__home {
-  position: relative;
+  position: absolute;
+  right: 0;
   margin-bottom: 25px;
 }
 .material-symbols-outlined {
@@ -24,16 +27,28 @@ body {
   top: 0;
 }
 label {
-  font-size: 25px;
+  font-size: 20px;
+}
+#emailLabel {
+  margin-top: 20px;
 }
 input {
   height: 35px;
-  width: 98%;
-  margin-bottom: 20px;
+  width: 100%;
+  margin-bottom: 3px;
   border-radius: 5px;
   text-indent: 10px;
-  font-size: 20px;
+  font-size: 17px;
   border-color: #dbdb;
+}
+.hiddenDiv {
+  text-align: right;
+}
+.hiddenSpan {
+  visibility: hidden;
+}
+.notice {
+  color: red;
 }
 input:focus {
   background-color: antiquewhite;
@@ -43,10 +58,11 @@ input:focus {
 }
 #loginBtn {
   height: 35px;
-  width: 120px;
+  width: 100px;
   background-color: rgb(233, 250, 149);
-  font-size: 20px;
+  font-size: 17px;
   border-radius: 5px;
+  margin-top: 10px;
 }
 #loginBtn:hover {
   color: rgb(0, 4, 247);
@@ -58,18 +74,17 @@ input:focus {
   cursor: pointer;
 }
 .confirmSign {
-  font-size: 20px;
-  margin: 20px 0px 5px;
+  font-size: 17px;
+  margin: 13px 0px 5px;
 }
 #signUpBtn {
   height: 35px;
-  width: 120px;
+  width: 100px;
   background-color: rgb(255, 1, 1);
-  font-size: 20px;
+  font-size: 17px;
   border-radius: 5px;
   color: white;
 }
-
 #signUpBtn:hover {
   font-weight: bold;
   cursor: pointer;
