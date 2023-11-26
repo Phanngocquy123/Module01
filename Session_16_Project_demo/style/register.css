@@ -4,15 +4,19 @@
   box-sizing: border-box;
 }
 body {
+  background-image: url(../assets/ImgFile/bgrsign.PNG);
+  background-size: cover;
   display: flex;
   justify-content: center;
   margin-top: 30px;
 }
+
 .registerCss {
+  background-color: white;
   display: flex;
   flex-direction: column;
   width: 35%;
-  border: double 7px red;
+  border: double 10px rgb(0, 17, 255);
   border-radius: 10px;
   padding: 15px;
   position: relative;
@@ -26,7 +30,7 @@ body {
 label {
   font-size: 20px;
 }
-#nameLabel{
+#nameLabel {
   margin-top: 30px;
 }
 input {
@@ -45,15 +49,15 @@ input:focus {
   text-align: center;
 }
 
-.hiddenDiv{
+.hiddenDiv {
   text-align: right;
 }
-.hiddenSpan{
+.hiddenSpan {
   visibility: hidden;
 }
-.notice{
-color: red;
-margin-left: 5px;
+.notice {
+  color: red;
+  margin-left: 5px;
 }
 #signUpBtn {
   height: 35px;

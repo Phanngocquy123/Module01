@@ -15,17 +15,31 @@ function checkOutCart() {
             <tr >
                 <td class="hiddenTd">${j + 1}</td>
                 <td class="hiddenTd">${userBuy[i].cart[j].name}</td>
-                <td class="hiddenTd"><img class="imgOut" src=${userBuy[i].cart[j].img}></td>
-                <td class="hiddenTd">${VND.format(userBuy[i].cart[j].price)}</td>
+                <td class="hiddenTd"><img class="imgOut" src=${
+                  userBuy[i].cart[j].img
+                }></td>
+                <td class="hiddenTd">${VND.format(
+                  userBuy[i].cart[j].price
+                )}</td>
                 <td class="hiddenTd">
                   <div class="quantityOut">
-                    <span class="quantityBtn" onclick="decrease(${userBuy[i].cart[j].id})"> - </span>
-                    <p class="quantityNumber">${userBuy[i].cart[j].quantity} </p>
-                    <span class="quantityBtn" onclick="increase(${userBuy[i].cart[j].id})">+</span></td>
+                    <span class="quantityBtn" onclick="decrease(${
+                      userBuy[i].cart[j].id
+                    })"> - </span>
+                    <p class="quantityNumber">${
+                      userBuy[i].cart[j].quantity
+                    } </p>
+                    <span class="quantityBtn" onclick="increase(${
+                      userBuy[i].cart[j].id
+                    })">+</span></td>
                   </div>
-                <td class="hiddenTd money">${VND.format(userBuy[i].cart[j].price * userBuy[i].cart[j].quantity)}</td>
+                <td class="hiddenTd money">${VND.format(
+                  userBuy[i].cart[j].price * userBuy[i].cart[j].quantity
+                )}</td>
                 <td class="boderHidden">
-                  <span onclick="deletePro(${userBuy[i].cart[j].id})" class="material-symbols-outlined deleteProduct">remove_shopping_cart</span>
+                  <span onclick="deletePro(${
+                    userBuy[i].cart[j].id
+                  })" class="material-symbols-outlined deleteProduct">remove_shopping_cart</span>
                 </td>
             </tr>
             `;

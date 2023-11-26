@@ -91,8 +91,7 @@ function signUpClick() {
       status: 1,
       time: time,
       timeSort: timeSort,
-      id:
-        Math.floor(Math.random() * 6562) + new Date().getMilliseconds(),
+      id: Math.floor(Math.random() * 6562) + new Date().getMilliseconds(),
     };
 
     let findUserEmail = userList.findIndex((UserElement) => {
@@ -115,7 +114,7 @@ function signUpClick() {
 }
 
 function signInClick() {
-  window.location.href = "../pages/login.html";
+  window.location.href = "../index/index.html";
 }
 
 function homeClick() {

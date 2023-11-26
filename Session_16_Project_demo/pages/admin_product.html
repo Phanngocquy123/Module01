@@ -17,7 +17,7 @@
       <div id="productControl__add">
         <div class="productControl__btn">
           <p class="contentP">Thêm sản phẩm:</p>
-          <div class="productControl__btnAddCancel" >
+          <div class="productControl__btnAddCancel">
             <button class="addBtn" onclick="addProduct()">Thêm</button>
             <button class="cancelBtn" onclick="cancelEdit()">Hủy</button>
           </div>
@@ -25,15 +25,11 @@
         <label class="labelName">Tên sản phẩm:</label>
         <input id="addNameProduct" type="text" /> <br />
         <label class="labelName">Giá:</label>
-        <input  id="addPriceProduct" type="text" /> <br />
+        <input id="addPriceProduct" type="text" /> <br />
         <label class="labelName">Hình ảnh:</label>
         <label for="addImgProduct" class="addImgBtn">Chọn ảnh</label>
-        <input
-          id="addImgProduct"
-          type="file"
-          onchange="changeImage(this)"
-        />
-        <br/>
+        <input id="addImgProduct" type="file" onchange="changeImage(this)" />
+        <br />
         <div id="spaceImg"></div>
       </div>
       <div id="productControl__show">

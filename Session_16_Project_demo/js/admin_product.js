@@ -155,6 +155,7 @@ function addProduct() {
         showProductControl();
         cancelEdit()
         idEdit=""
+        imgBase64=""
         return;
       }
     }
@@ -169,8 +170,8 @@ function addProduct() {
     productSave.push(addObj);
     localStorage.setItem("products", JSON.stringify(productSave));
     showProductControl();
-    cancelEdit()
-    console.log("Đã thêm sản phẩm");
+    cancelEdit();
+    imgBase64="";
   }
 }
 

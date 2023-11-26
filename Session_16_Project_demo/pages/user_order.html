@@ -4,37 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../style/admin_orderform.css" />
+    <link rel="stylesheet" href="../style/user_order.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
   </head>
   <body>
-    <div class="adminControl">
-      <span class="adminControl-btn" onclick="home()">Trang chủ</span>
-      <span class="adminControl-btn" onclick="productC()"
-        >Quản lý sản phẩm</span
+    <div class="header__userOrders">
+      <span
+        onclick="home()"
+        class="material-symbols-outlined header__userOrders-home"
       >
-      <span class="adminControl-btn" onclick="userC()">Quản lý người dùng</span>
+        home
+      </span>
+      <p class="header__userOrders-p">Đơn hàng của bạn</p>
     </div>
-    <p class="orderControl-p">Quản lý đơn hàng</p>
+
     <div class="order">
       <div id="orderList">
-        <p class="orderList-p">Thông tin chung</p>
+        <p class="orderList-p">Đơn hàng đã đặt</p>
         <table border="1px" style="border-collapse: collapse">
           <thead>
             <tr>
               <th>Stt</th>
-              <th>ID</th>
-              <th>Khách hàng</th>
+              <th>Tên</th>
               <th>Địa chỉ</th>
               <th>Số điện thoại</th>
               <th>Thời gian</th>
               <th>Đơn hàng</th>
               <th>Ghi chú KH</th>
               <th>Trạng thái</th>
-              <th>Quản lý</th>
             </tr>
           </thead>
           <tbody id="showOrders"></tbody>
@@ -70,6 +70,6 @@
         </table>
       </div>
     </div>
-    <script src="../js/admin_orderform.js"></script>
+    <script src="../js/user_order.js"></script>
   </body>
 </html>

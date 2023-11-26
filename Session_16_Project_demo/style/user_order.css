@@ -7,31 +7,24 @@ body {
   display: flex;
   flex-direction: column;
 }
-.adminControl {
-  background-color: rgb(251, 245, 236);
+.header__userOrders {
+  background-color: rgb(251, 255, 126);
   display: flex;
+  align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 20px;
-}
-.adminControl-btn {
-  border: groove;
-  border-radius: 5px;
-  padding: 2px;
-}
-.adminControl-btn:hover {
-  cursor: pointer;
-  background-color: rgb(255, 255, 0);
-}
-.orderControl-p {
-  font-size: 17px;
-  font-weight: bold;
-  background-color: rgb(203, 255, 126);
-  color: red;
-  padding: 5px;
-  margin-bottom: 10px;
   width: 100%;
-  text-align: center;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+.header__userOrders-home:hover {
+  color: rgb(248, 47, 255);
+  cursor: pointer;
+}
+.header__userOrders-p {
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
 }
 
 /* order */
@@ -71,7 +64,7 @@ td {
   padding: 1px;
 }
 .colorActived {
-  background-color: rgb(251, 239, 221);
+  background-color: rgb(196, 255, 79);
 }
 .proDetail {
   color: blue;

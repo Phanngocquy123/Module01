@@ -3,23 +3,20 @@ const VND = new Intl.NumberFormat("vi-VN", {
   currency: "VND",
 });
 
-function signInClick() {
-  window.location.href = "../pages/login.html";
-}
 function signUpClick() {
   window.location.href = "../pages/register.html";
 }
 /* let productStockList1 = [
   {
     name: "Bulong lục giác",
-    price: 2003,
+    price: 3003,
     img: "../assets/ImgFile/bolt1.jpg",
     status:true,
     id:Math.floor(Math.random() * 84345) + new Date().getMilliseconds(),
   },
   {
     name: "Bulong M10",
-    price: 2006,
+    price: 5006,
     img: "../assets/ImgFile/bolt2.jpg",
     status:true,
     id:Math.floor(Math.random() * 84345) + new Date().getMilliseconds(),
@@ -33,7 +30,7 @@ function signUpClick() {
   },
   {
     name: "Bulong lục M8",
-    price: 2900,
+    price: 8900,
     img: "../assets/ImgFile/bolt4.jpg",
     status:true,
     id:Math.floor(Math.random() * 84345) + new Date().getMilliseconds(),
@@ -84,7 +81,7 @@ function signUpClick() {
 localStorage.setItem("products", JSON.stringify(productStockList1)); */
 
 let productStockList = JSON.parse(localStorage.getItem("products")) || [];
-let itemPage = 3;
+let itemPage = 6;
 let totalPage = 1;
 let currentPage = 1;
 let start;
@@ -143,6 +140,8 @@ function showListPage() {
             ${text}
             <span class="material-symbols-outlined pageBtn" onclick="nextPage()" > navigate_next </span>
            `;
+  let pageHoverFist = document.getElementsByClassName("page-item");
+  pageHoverFist[0].classList.add("pageActived");
 }
 showListPage();
 
@@ -156,8 +155,13 @@ function choosePage(a) {
       pageItem[i].classList.remove("pageActived");
     }
   }
-  startEnd(currentPage);
-  showProduct(productStockList);
+  if (sortList) {
+    startEnd(currentPage);
+    showProduct(sortList);
+  } else {
+    startEnd(currentPage);
+    showProduct(productStockList);
+  }
 }
 
 function nextPage() {
@@ -228,13 +232,20 @@ function showCartNotice() {
     x.className = x.className.replace("show", "");
   }, 3000);
 }
+function showSignInNotice() {
+  let x = document.getElementById("showSignNotice");
+  x.className = "showSign";
+  setTimeout(function () {
+    x.className = x.className.replace("showSign", "");
+  }, 3000);
+}
 
 function showCartQuantity() {
   let cartOfUser = JSON.parse(localStorage.getItem("userList"));
   let checkLoginDone = localStorage.getItem("idUserLogin");
   if (checkLoginDone) {
-    document.getElementsByClassName("signBtn")[0].style.display = "none";
-    document.getElementsByClassName("signBtn")[1].style.display = "none";
+    document.getElementsByClassName("signInBtn")[0].style.display = "none";
+    document.getElementsByClassName("signUpBtn")[0].style.display = "none";
     let checkUsing = cartOfUser.findIndex((userUsing) => {
       return userUsing.id == checkLoginDone;
     });
@@ -252,8 +263,8 @@ showCartQuantity();
 
 function signOutClick() {
   localStorage.removeItem("idUserLogin");
-  document.getElementsByClassName("signBtn")[0].style.display = "block";
-  document.getElementsByClassName("signBtn")[1].style.display = "block";
+  document.getElementsByClassName("signInBtn")[0].style.display = "block";
+  document.getElementsByClassName("signUpBtn")[0].style.display = "block";
   document.getElementsByClassName("header__fist-helloBtn")[0].style.display =
     "none";
 }
@@ -275,6 +286,38 @@ function search(param1, param2) {
   timeId = setTimeout(() => {
     param1();
   }, param2);
+}
+/* function search() {
+  let searchValue = document.getElementById("searchProduct").value;
+  let resultSearch = productStockList.filter((itemSearch) => {
+    return itemSearch.name.indexOf(searchValue) != -1;
+  });
+  console.log(resultSearch);
+  showProduct(resultSearch);
+  totalPageCurrent(resultSearch);
+  showListPage();
+} */
+let sortList;
+function priceSortIncrease() {
+  let SortIncrease = JSON.parse(localStorage.getItem("products")) || [];
+  sortList = SortIncrease.sort(function (a, b) {
+    return a.price - b.price;
+  });
+
+  showProduct(sortList);
+  totalPageCurrent(sortList);
+  choosePage(1);
+  showListPage();
+}
+function priceSortDecrease() {
+  let sortDecrease = JSON.parse(localStorage.getItem("products")) || [];
+  sortList = sortDecrease.sort(function (a, b) {
+    return b.price - a.price;
+  });
+  showProduct(sortList);
+  totalPageCurrent(sortList);
+  choosePage(1);
+  showListPage();
 }
 
 function checkOutCart() {
@@ -301,27 +344,77 @@ function checkOutCart() {
   window.location.href = "../pages/checkout_cart.html";
 }
 
+function userOrders() {
+  window.location.href = "../pages/user_order.html";
+}
+
+function signInClick() {
+  let emailValue = document.getElementById("emailInputLogin").value;
+  let passwordValue = document.getElementById("passwordInputLogin").value;
+  let userLogin = JSON.parse(localStorage.getItem("userList")) || [];
+
+  let email = false;
+  let pass = false;
+  for (let i = 0; i < userLogin.length; i++) {
+    if (!emailValue) {
+      document.getElementsByClassName("emailNotice")[0].textContent =
+        "Bạn chưa nhập email";
+    } else if (emailValue == userLogin[i].email) {
+      document.getElementsByClassName("emailNotice")[0].textContent = "";
+      email = true;
+    } else {
+      document.getElementsByClassName("emailNotice")[0].textContent = "";
+    }
+
+    if (!passwordValue) {
+      document.getElementsByClassName("passNotice")[0].textContent =
+        "Bạn chưa nhập mật khẩu";
+    } else if (passwordValue == userLogin[i].password) {
+      document.getElementsByClassName("passNotice")[0].textContent = "";
+      pass = true;
+    } else {
+      document.getElementsByClassName("passNotice")[0].textContent = "";
+    }
+
+    if (email && pass) {
+      var idIndex = i;
+      break;
+    }
+  }
+  if (email && pass) {
+    localStorage.setItem("idUserLogin", userLogin[idIndex].id);
+    showSignInNotice();
+    document.getElementById("showSignNotice").innerHTML =
+      "Đăng nhập thành công";
+    window.location.href = "../index/index.html";
+  } else if (emailValue && passwordValue) {
+    showSignInNotice();
+    document.getElementById("showSignNotice").innerHTML =
+      "Tài khoản không tồn tại";
+  }
+}
+
 let slideIndex;
 function showSlides() {
- 
   let slides = document.getElementsByClassName("header-img");
   let dots = document.getElementsByClassName("dot");
   for (let i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
   for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace("active","");
+    dots[i].className = dots[i].className.replace("active", "");
   }
   slides[slideIndex].style.display = "block";
-  dots[slideIndex].className += " active";  /* không xóa khoảng trống */
+  dots[slideIndex].className += " active"; /* không xóa khoảng trống */
   slideIndex++;
-  if (slideIndex > slides.length-1) {
+  if (slideIndex > slides.length - 1) {
     slideIndex = 0;
   }
-  setTimeout(showSlides, 5000);
 }
-showSlides(slideIndex = 0);
+showSlides((slideIndex = 0));
+
+setInterval(showSlides, 5000);
 
 function currentSlide(n) {
-  showSlides(slideIndex = n);
+  showSlides((slideIndex = n));
 }

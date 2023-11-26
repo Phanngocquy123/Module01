@@ -20,6 +20,103 @@
   color: white;
   font-weight: bolder;
 }
+/* signIn */
+.dropdown-signIn {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.signInBtn {
+  background-color: rgb(255, 255, 196);
+  height: 25px;
+  width: 70px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-signIn-content {
+  display: none;
+  background-color: #f8f6f3;
+  width: 400%;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 1;
+  padding: 8px;
+  border: groove;
+  border-radius: 2px;
+  box-shadow: 2px 2px 5px rgb(255, 203, 203);
+}
+
+.dropdown-signIn:hover .dropdown-signIn-content {
+  display: block;
+}
+.signInBtn:hover {
+  font-weight: bold;
+}
+
+label {
+  font-size: 20px;
+}
+#emailLabel {
+  margin-top: 20px;
+}
+input {
+  height: 35px;
+  width: 100%;
+  margin-bottom: 3px;
+  border-radius: 5px;
+  text-indent: 10px;
+  font-size: 17px;
+}
+.hiddenDiv {
+  text-align: right;
+}
+.hiddenSpan {
+  visibility: hidden;
+}
+.notice {
+  color: red;
+}
+
+.divBtn {
+  text-align: center;
+}
+#loginBtn {
+  height: 35px;
+  width: 100px;
+  background-color: rgb(233, 250, 149);
+  font-size: 17px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+#loginBtn:hover {
+  color: rgb(0, 4, 247);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.confirmSign {
+  font-size: 17px;
+  margin: 13px 0px 5px;
+}
+
+/* signUp signOut */
+.signUpBtn,
+.signOut {
+  background-color: rgb(255, 255, 196);
+  height: 25px;
+  width: 70px;
+  border-radius: 5px;
+  border: none;
+}
+.signUpBtn,
+.signOut:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+
 /* show ảnh chạy */
 .header .header__second {
   display: flex;
@@ -29,7 +126,7 @@
   margin: 5px 2px 0;
 }
 .dot {
-  cursor:pointer;
+  cursor: pointer;
   height: 13px;
   width: 13px;
   margin: 0 2px 5px;
@@ -38,7 +135,8 @@
   display: inline-block;
   transition: background-color 0.6s ease;
 }
-.active, .dot:hover {
+.active,
+.dot:hover {
   background-color: #ff4747;
 }
 
@@ -60,13 +158,6 @@
   border-radius: 12.5px;
   font-style: italic;
 }
-.signBtn {
-  background-color: rgb(255, 255, 196);
-  height: 25px;
-  width: 70px;
-  border-radius: 5px;
-  border: none;
-}
 
 .header-img-cart {
   display: flex;
@@ -87,12 +178,13 @@
 }
 #boughtQuantityCart {
   position: absolute;
-  right: 5px;
-  top: 1px;
+  right: 8px;
+  top: 2px;
   font-size: 15px;
   color: red;
 }
-.header-img-cart:hover {
+.header-img-cart:hover,
+.helloUserUsing:hover {
   cursor: pointer;
   background-color: rgb(255, 255, 167);
 }
@@ -100,17 +192,19 @@
 /* show product */
 .products {
   display: flex;
-  justify-content: center;
-  position: relative;
+  justify-content: space-around;
 }
 .products__class {
-  background-color: #f8ff3a;
   width: 18%;
-  position: absolute;
-  left: 20px;
+  margin-left: 10px;
+  height: fit-content;
+}
+.products__total {
+  width: 70%;
 }
 .products__detail {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
 }
@@ -119,12 +213,13 @@
   border: groove;
   border-radius: 10px;
   padding: 5px;
+  width: 30%;
 }
 .products__content-img {
   text-align: center;
 }
 .products__content-text {
-  background-color: rgb(147, 247, 247);
+  background-color: rgb(231, 250, 250);
   border-radius: 10px;
   padding: 5px;
 }
@@ -193,27 +288,65 @@
   color: white;
 }
 
-.signBtn:hover {
-  font-weight: bold;
-  cursor: pointer;
-}
 /* search */
-.search{
-  text-align: center;
+.search {
+  display: flex;
+  justify-content: center;
   margin-bottom: 10px;
 }
-#searchProduct{
+#searchProduct {
   height: 30px;
   width: 40%;
   border-radius: 5px;
   text-indent: 17px;
+  margin: 5px;
+}
+/* dropdown sort price */
+.priceSort_dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90px;
+  position: relative;
+}
+.priceSort_dropdown-btn {
+  border: solid 1.5px;
+  border-radius: 5px;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 4px;
+}
+
+.priceSort_dropdown-content {
+  display: none;
+  z-index: 1;
+  position: absolute;
+  top: 100%;
+  left: 7px;
+}
+.priceSort_dropdown:hover .priceSort_dropdown-content {
+  display: block;
+}
+.priceSortBtn {
+  padding: 3px;
+  margin-bottom: 2px;
+  background-color: #fef2ca;
+  border: solid 1px;
+  border-radius: 5px;
+  width: 130px;
+}
+.priceSortBtn:hover {
+  cursor: pointer;
+  color: red;
 }
 /* dropdown danh mục sản phẩm */
 .products__class {
   background-color: #f6f6f6;
   box-shadow: -2px -2px 5px rgb(219, 197, 197);
 }
-.products__class-p{
+.products__class-p {
   background-color: #ff3a3a;
   color: white;
   padding: 13px;
@@ -241,13 +374,13 @@
   box-shadow: 5px 5px 8px rgb(219, 197, 197);
   z-index: 1;
 }
-.dropdown-contentDiv{
+.dropdown-contentDiv {
   display: flex;
 }
-.dropdown-contentDiv1{
+.dropdown-contentDiv1 {
   min-width: 220px;
 }
-.dropdown-contentDiv1-p{
+.dropdown-contentDiv1-p {
   padding: 12px 16px;
   font-weight: bold;
 }
@@ -259,24 +392,25 @@
 .dropdown-content a:hover {
   background-color: #ffb9b9;
 }
-.dropdown:hover .dropdown-content { /* Hiển thị dropdown menu khi di chột */
+.dropdown:hover .dropdown-content {
+  /* Hiển thị dropdown menu khi di chột */
   display: block;
 }
 .dropBtn:hover {
   background-color: #f8ff3a;
 }
-hr{
+hr {
   width: 80%;
-  margin-left:10px;
+  margin-left: 10px;
   size: 2px;
 }
 /* quảng cáo */
 .products__advertise {
   width: 18%;
-  position: absolute;
-  right: 20px;
+  margin-right: 10px;
+  /* right: 20px; */
 }
-.products__advertise-p{
+.products__advertise-p {
   background-color: #f8ff3a;
   box-shadow: 2px -2px 3px rgb(219, 197, 197);
   width: 99%;
@@ -284,8 +418,65 @@ hr{
   font-size: 17px;
   text-align: center;
 }
-.products__advertise-img{
-width: 100%;
+.products__advertise-img {
+  width: 100%;
+}
+/* show notice đăng nhập */
+#showSignNotice {
+  visibility: hidden;
+  background-color: #f8fabe;
+  color: rgb(0, 4, 226);
+  text-align: center;
+  border-radius: 10px;
+  padding: 16px;
+  position: absolute;
+  z-index: 1;
+  right: 38%;
+  top: 42%;
+  font-size: 18px;
+  border: double 5px;
+  font-weight: bold;
+}
+#showSignNotice.showSign {
+  visibility: visible;
+  -webkit-animation: showin 0.5s, showout 0.5s 3s;
+  animation: showin 0.5s, showout 0.5s 3s;
+}
+/* footer content */
+.footerContent {
+  background-color: #eeeeee;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  padding: 15px;
+}
+.footer-p {
+  font-size: 18px;
+  font-weight: bold;
+}
+ul {
+  list-style: none;
+}
+li {
+  padding: 3px 0;
+}
+.footerContent-three-div {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.footerContent-three-img {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+}
+.footerContent-three-app {
+  display: flex;
+  flex-direction: column;
+}
+.iosApp {
+  position: absolute;
+  left: 7px;
 }
 /* show notice mua hàng */
 #showNotice {

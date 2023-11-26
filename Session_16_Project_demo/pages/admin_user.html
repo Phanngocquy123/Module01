@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="../style/admin_user.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
   </head>
   <body>
     <div class="adminControl">
       <span class="adminControl-btn" onclick="home()">Trang chủ</span>
       <span class="adminControl-btn" onclick="orderC()">Quản lý đơn hàng</span>
-      <span class="adminControl-btn" onclick="productC()">Quản lý sản phẩm</span>
+      <span class="adminControl-btn" onclick="productC()"
+        >Quản lý sản phẩm</span
+      >
     </div>
     <div class="userTableControl">
       <p class="userTableControl-p">Quản lý người dùng</p>
@@ -28,16 +33,22 @@
             <th>
               <div class="sortBtn">
                 <p>Sắp xếp</p>
-                <span class="material-symbols-outlined dropUpDonw" onclick="dropUp()">arrow_drop_up</span>
-                <span class="material-symbols-outlined dropUpDonw" onclick="dropDown()">arrow_drop_down</span>
+                <span
+                  class="material-symbols-outlined dropUpDonw"
+                  onclick="dropUp()"
+                  >arrow_drop_up</span
+                >
+                <span
+                  class="material-symbols-outlined dropUpDonw"
+                  onclick="dropDown()"
+                  >arrow_drop_down</span
+                >
               </div>
             </th>
           </tr>
         </thead>
-        <tbody id="userControl">
-        </tbody>
+        <tbody id="userControl"></tbody>
       </table>
-                
     </div>
     <script src="../js/admin_user.js"></script>
   </body>

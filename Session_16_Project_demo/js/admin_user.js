@@ -5,11 +5,9 @@ function userAdmin() {
     text += `
                   <tr>
                     <td class="deleteTr">
-                      <span class="material-symbols-outlined deleteUser" onclick="deleteUser(${
-                        userList[i].id
-                      })">
-                    delete
-                    </span></td>
+                      <span class="material-symbols-outlined deleteUser" onclick="deleteUser(${userList[i].id})">
+                        delete
+                      </span></td>
                     <td>${i + 1}</td>
                     <td>${userList[i].id}</td>
                     <td>${userList[i].name}</td>
@@ -19,15 +17,11 @@ function userAdmin() {
                       <div class="status">
                         <div class="statusLock">
                           <p class="statusLock-p">Lock</p>
-                          <span class="material-symbols-outlined statusLock-icon" onclick="statusUserClick(${
-                            userList[i].id
-                          })">person_off</span>
+                          <span class="material-symbols-outlined statusLock-icon" onclick="statusUserClick(${userList[i].id})">person_off</span>
                         </div>
                         <div class="statusUnlock">
                           <p class="statusUnlock-p">Unlock</p>
-                          <span class="material-symbols-outlined statusUnlock-icon" onclick="statusUserClick(${
-                            userList[i].id
-                          })">person</span>
+                          <span class="material-symbols-outlined statusUnlock-icon" onclick="statusUserClick(${userList[i].id})">person</span>
                         </div>
                       </div>
                     </td>
