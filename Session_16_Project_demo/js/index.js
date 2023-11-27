@@ -82,7 +82,7 @@ localStorage.setItem("products", JSON.stringify(productStockList1)); */
 
 let productStockList = JSON.parse(localStorage.getItem("products")) || [];
 let itemPage = 6;
-let totalPage = 1;
+let totalPage;
 let currentPage = 1;
 let start;
 let end;
@@ -109,7 +109,7 @@ function showProduct(productCurrent) {
                 <img src="${productCurrent[i].img}" alt="" class="imgBolt" />
              </div>
              <div class="products__content-text">
-               <p class="content-detail">Sản phẩm:${productCurrent[i].name}</p>
+               <p class="content-detail">Sản phẩm: ${productCurrent[i].name}</p>
                <p class="content-detail"> Giá: ${VND.format(
                  productCurrent[i].price
                )}</p>
@@ -274,6 +274,7 @@ function startSearch() {
   let resultSearch = productStockList.filter((itemSearch) => {
     return itemSearch.name.indexOf(searchValue) != -1;
   });
+  
   showProduct(resultSearch);
   totalPageCurrent(resultSearch);
   showListPage();
